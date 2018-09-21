@@ -94,7 +94,7 @@ async def choose(ctx, option1, option2):
 @bot.command(aliases=['h'])
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="List commands", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban` `softban` `purge`  `role`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emoji_info`  `serverinfo`  `userinfo`  `stats`", inline=False)
