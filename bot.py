@@ -31,7 +31,7 @@ async def on_message(message):
 
 @bot.listen()
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="Type ,h or ,help | BETA"))
+    await bot.change_presence(activity=discord.Game(name=f'k pa | {len(bot.guilds)} servers'))
 
 @bot.command()
 async def invite(ctx):
