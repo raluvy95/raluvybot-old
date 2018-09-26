@@ -190,12 +190,6 @@ async def here(ctx):
 async def rage(ctx):
     await ctx.send("ヽ( ಠ益ಠ )ﾉ")
 
-@bot.event
-async def on_command_error(ctx, error):
-    if ctx.author.bot is True:
-        return
-    await ctx.send(f'<:RaluvyError:489805076118896690> | **{error}**')
-
 @bot.command(aliases= ["sinfo", "server info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def serverinfo(ctx):
