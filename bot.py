@@ -348,6 +348,12 @@ async def owo(ctx, *, message=None):
     if message is None:
         return await ctx.send("**OwO! What's this?**")
     await ctx.send(f"""**OwO! {message}**""")
+	
+@bot.command()
+async def uwu(ctx, *, message=None):
+    if message is None:
+        return await ctx.send("<a:aUWU:478879639586996224>")
+    await ctx.send(f"""<a:aUWU:478879639586996224> | **{message}**""")
 
 @bot.command()
 async def wumpus(ctx, *, message=None):
