@@ -53,10 +53,6 @@ async def on_message(message):
     else:
         await bot.process_command(message)
 
-@bot.listen()
-async def on_ready():
-    await bot.change_presence(activity=discord.Game(name=f',help || ,invite'))
-
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def invite(ctx):
@@ -431,6 +427,25 @@ async def support(ctx):
     em.add_field(name='Join our support server!', value='[here]( https://discord.gg/bazhjYQ )')
     await ctx.send(embed=em)
 
+async def presence():
+    await bot.wait_until_ready()
+    while not bot.is_closed():
+        a = 0
+        for i in bot.guilds:
+            for u in i.members:
+                if u.bot == False:
+                    a = a + 1
 
+        await bot.change_presence(activity=discord.Game(name="RaluvyBot || ,help"))
+        await sleep(30)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{len(bot.users)} users || ,help"))
+        await sleep(30)
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | ,help"))
+        await sleep(30)
+	await bot.change_presence(activity=discord.Game(name=",invite || ,help"))
+	await sleep(30)
 
+	
+
+bot.loop.create_task(presence())
 bot.run(os.getenv("TOKEN"))
