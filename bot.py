@@ -436,14 +436,14 @@ async def presence():
                 if u.bot == False:
                     a = a + 1
 
-        await bot.change_presence(activity=discord.Game(name="RaluvyBot || ,help"))
-        await sleep(30)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{len(bot.users)} users || ,help"))
-        await sleep(30)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | ,help"))
-        await sleep(30)
-	await bot.change_presence(activity=discord.Game(name=",invite || ,help"))
-	await sleep(30)
+         await bot.change_presence(activity=discord.Game(name="RaluvyBot || ,help"))
+         await sleep(30)
+         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{len(bot.users)} users || ,help"))
+         await sleep(30)
+         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | ,help"))
+         await sleep(30)
+	 await bot.change_presence(activity=discord.Game(name=",invite || ,help"))
+	 await sleep(30)
 
 	
 
