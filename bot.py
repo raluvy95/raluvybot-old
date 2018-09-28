@@ -12,7 +12,7 @@ from asyncio import sleep
 import logging
 import os
 
-bot = commands.Bot(command_prefix=';;')
+bot = commands.Bot(command_prefix=',')
 logging.basicConfig(level='INFO')
 bot.remove_command('help')
 bot.load_extension("cogs.admin")
