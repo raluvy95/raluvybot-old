@@ -19,7 +19,8 @@ class API():
 
 
 
-	@commands.command(aliases=['shiba', 'doggo'])
+	@commands.command(aliases=['shiba'])
+	@commands.cooldown(1, 5, commands.BucketType.user)
 	async def doge(self, ctx):
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get('http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=false') as r:
@@ -34,7 +35,8 @@ class API():
 
 
 
-	@commands.command(aliases=['woof', 'doggy', 'puppy'])
+	@commands.command(aliases=['woof'])
+	@commands.cooldown(1, 5, commands.BucketType.user)
 	async def dog(self, ctx):
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get("http://random.dog/woof.json") as r:
@@ -48,7 +50,8 @@ class API():
 
 
 
-	@commands.command(aliases=['meow', 'kitty'])
+	@commands.command(aliases=['meow'])
+	@commands.cooldown(1, 5, commands.BucketType.user)
 	async def cat(self, ctx):
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get('http://aws.random.cat/meow') as r:
@@ -59,7 +62,6 @@ class API():
 				embed.set_footer(text=f"{self.bot.user.name}")
 				embed.timestamp = datetime.datetime.utcnow()
 				await ctx.send(embed=embed)
-
 
 
 
