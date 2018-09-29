@@ -94,6 +94,14 @@ async def love(ctx):
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
+async def randomnumber(ctx, *, digits:int=1):
+    number = ""
+    for i in range(digits):
+        number += str(random.randint(0, 100))
+    await ctx.send(f":1234: | **Your random number is `{number}`!**")
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
 async def space(ctx, *, message=None):
     if message is None:
         return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Hey, please use `,space [message]`!**')
