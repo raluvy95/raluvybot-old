@@ -92,7 +92,7 @@ async def search(ctx, *, query):
 async def love(ctx):
     await ctx.send("(˵ ͡~ ͜ʖ ͡°˵)ﾉ⌒♡*:･。.")
 
-@bot.command()
+@bot.command(aliases= ["number"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def randomnumber(ctx, *, digits:int=1):
     number = ""
@@ -140,8 +140,8 @@ async def help(ctx):
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban` `softban` `purge`  `role`", inline=False)
-    embed.add_field(name=":information_source: Info", value="`emoji_info`  `serverinfo`  `userinfo`  `stats`", inline=False)
-    embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `avatar`  `search`  `invite`", inline=False)
+    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
+    embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
     embed.add_field(name=":thinking: More questions?", value="Type `support` for join our server!", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
@@ -218,7 +218,7 @@ async def here(ctx):
 async def rage(ctx):
     await ctx.send("ヽ( ಠ益ಠ )ﾉ")
 
-@bot.command(aliases= ["sinfo", "server info"])
+@bot.command(aliases= ["sinfo", "server info", "server_info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def serverinfo(ctx):
     em = discord.Embed(color=discord.Colour.orange())
@@ -292,7 +292,7 @@ async def unflip(ctx):
 async def cplm(ctx):
     await ctx.send("<:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372>")
 
-@bot.command(aliases=['about'])
+@bot.command(aliases=['about', 'info', 'botinfo'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def stats(ctx):
     embed = discord.Embed(title="Stats Bot", color=0xe67e22)
@@ -355,7 +355,8 @@ async def ban(ctx, user: discord.Member = None):
         await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
 
 
-@bot.command(aliases= ["whois"])
+@bot.command(aliases= ["whois", "user info", "user_info"])
+@commands.cooldown(1, 5, commands.BucketType.user)
 async def userinfo(ctx, member: discord.Member=None):
     if member is None:
 	    member = (ctx.author)
