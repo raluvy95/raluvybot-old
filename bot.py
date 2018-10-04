@@ -114,7 +114,41 @@ async def clap(ctx, *, message=None):
         return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Hey, please use `,clap [message]`!**')
     await ctx.send(':clap:'.join(message))
 
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def parrot(ctx, *, message=None):
+    if message is None:
+        return await ctx.send('<a:parrot:491311653884002304>')
+    await ctx.send('<a:parrot:491311653884002304>'.join(message))
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def owo(ctx, *, message=None):
+    if message is None:
+        return await ctx.send("**OwO! What's this?**")
+    await ctx.send(f"""**OwO! {message}**""")
 	
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def uwu(ctx, *, message=None):
+    if message is None:
+        return await ctx.send("<a:aUWU:478879639586996224>")
+    await ctx.send(f"""<a:aUWU:478879639586996224> | **{message}**""")
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def wumpus(ctx, *, message=None):
+    if message is None:
+        return await ctx.send('<a:aWumpus:479223216796336148>')
+    await ctx.send('<a:aWumpus:479223216796336148>'.join(message))
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def blobdance(ctx, *, message=None):
+    if message is None:
+        return await ctx.send('<a:ablobyay:464794064579985409>')
+    await ctx.send('<a:ablobyay:464794064579985409>'.join(message))
+
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def respect(ctx):
@@ -133,19 +167,6 @@ async def choose(ctx, option1, option2):
         return await ctx.send("<:RaluvyError:489805076118896690> | **I can't choose the same things ;-;**") 
     await ctx.send(f':thinking: | {ctx.author.mention}, i choose **' + random.choice(a) + '** !')
 
-@bot.command(aliases=['h'])
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def help(ctx):
-    embed = discord.Embed(title="HELP", description="List commands", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
-    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
-    embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban` `softban` `purge` `role`", inline=False)
-    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
-    embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
-    embed.add_field(name=":thinking: More questions?", value="Type `support` for join our server!", inline=False)
-    embed.set_footer(text='Use , before using commands')
-    embed.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=embed)
     
 
 @bot.command()
@@ -255,22 +276,6 @@ async def serverroles(ctx):
 async def tableflip(ctx):
     await ctx.send("(╯°□°）╯︵ ┻━┻")
 
-@bot.command(aliases=['prune'])
-@commands.cooldown(1, 5, commands.BucketType.user)
-@commands.has_permissions(manage_messages=True)
-async def purge(ctx, number: int):
-    await ctx.message.delete()
-    await ctx.message.channel.purge(limit=number)
-    await ctx.send(f'<:RaluvySucces:489805130963615754> | **{int(number)} message deleted**', delete_after=5)
-
-@bot.command(aliases=['av'])
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def avatar(ctx, member: discord.Member=None):
-    if member is None:
-        member = ctx.author
-    em = discord.Embed(description=f'{member.mention}\'s [avatar]({member.avatar_url})', color=discord.Colour.blurple())
-    em.set_image(url=member.avatar_url)
-    await ctx.send(embed=em)
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -310,6 +315,9 @@ async def stats(ctx):
     await ctx.send(embed=embed)
 
 
+
+# Moderation #
+
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member = None, *, message=None):
@@ -328,47 +336,85 @@ async def kick(ctx, member: discord.Member = None, *, message=None):
              await member.kick(reason=f'{message}  by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked!**')
 
-		
 @bot.command()
 @commands.has_permissions(ban_members=True)
-async def softban(ctx, member: discord.Member = None, *, message=None):
-        if member is ctx.author:
-            return await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban you! ;-;**")
-        if member is ctx.message.guild.owner:
-            await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban to Owner!**")
-        if member is ctx.me:
-            await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban myself ;-;**")
-        if member is None:
-            await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
-        if member is not None and message is None:
-            await member.ban(reason=f'Requested by {ctx.author}')
-	    await member.unban(reason=f'Requested by {ctx.author}')
-            await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
-        if member is not None and message is not None:
-            await member.ban(reason=f'{message}  by {ctx.author}')
-	    await member.unban(reason=f'{message}  by {ctx.author}')
-            await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
+async def softban(ctx, member: discord.Member = None):
+         if member is ctx.author:
+             return await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban you! ;-;**")
+         if member is ctx.message.guild.owner:
+             await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban to Owner!**")
+         if member is ctx.me:
+             await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban myself ;-;**")
+         if member is None:
+             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
+         if member is not None and message is None:
+             await member.kick(reason=f'Requested by {ctx.author}')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
+         if member is not None and message is not None:
+             await member.kick(reason=f'{message}  by {ctx.author}')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
 
-		
 @bot.command()
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member = None, *, message=None):
-        if member is ctx.author:
-            return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
-        if member is ctx.message.guild.owner:
-            await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban to Owner!**")
-        if member is ctx.me:
-            await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban myself ;-;**")
-        if member is None:
-            await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
-        if member is not None and message is None:
-            await member.ban(reason=f'Requested by {ctx.author}')
-            await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
-        if member is not None and message is not None:
-            await member.ban(reason=f'{message}  by {ctx.author}')
-            await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+         if member is ctx.author:
+             return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
+         if member is ctx.message.guild.owner:
+             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban to Owner!**")
+         if member is ctx.me:
+             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban myself ;-;**")
+         if member is None:
+             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
+         if member is not None and message is None:
+             await member.ban(reason=f'Requested by {ctx.author}')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+         if member is not None and message is not None:
+             await member.ban(reason=f'{message}  by {ctx.author}')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+	
+	
+@bot.group(aliases=['rank'])
+@commands.has_permissions(manage_roles=True)
+async def role(ctx):
+    if ctx.invoked_subcommand is None:
+        return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please, use** `,role [add/remove] [role] [membru]`')
 
-		
+@role.command()
+@commands.has_permissions(manage_roles=True)
+async def add(ctx, role: discord.Role, member: discord.Member):
+    await member.add_roles(role)
+    await ctx.send(f'<:RaluvySucces:489805130963615754> | **I added the rank `{role}` to `{member}`!**')
+    
+@role.command()
+@commands.has_permissions(manage_roles=True)
+async def remove(ctx, role: discord.Role, member: discord.Member):
+    await member.remove_roles(role)
+    await ctx.send(f'<:RaluvySucces:489805130963615754> | **I removed the rank `{role}` to `{member}`!**')
+
+@bot.command(aliases=['prune'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+@commands.has_permissions(manage_messages=True)
+async def purge(ctx, number: int):
+    await ctx.message.delete()
+    await ctx.message.channel.purge(limit=number)
+    await ctx.send(f'<:RaluvySucces:489805130963615754> | **{int(number)} message deleted**', delete_after=5)
+	
+	
+	
+
+	
+# Utility #	
+	
+@bot.command(aliases=['av'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def avatar(ctx, member: discord.Member=None):
+    if member is None:
+        member = ctx.author
+    em = discord.Embed(description=f'{member.mention}\'s [avatar]({member.avatar_url})', color=discord.Colour.blurple())
+    em.set_image(url=member.avatar_url)
+    await ctx.send(embed=em)
+	
+	
 @bot.command(aliases= ["whois", "user info", "user_info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def userinfo(ctx, member: discord.Member=None):
@@ -390,65 +436,30 @@ async def userinfo(ctx, member: discord.Member=None):
     await ctx.send(embed=embed)
 
 
-@bot.group(aliases=['rank'])
-@commands.has_permissions(manage_roles=True)
-async def role(ctx):
-    if ctx.invoked_subcommand is None:
-        return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please, use** `,role [add/remove] [role] [membru]`')
 
-@role.command()
-@commands.has_permissions(manage_roles=True)
-async def add(ctx, role: discord.Role, member: discord.Member):
-    await member.add_roles(role)
-    await ctx.send(f'<:RaluvySucces:489805130963615754> | **I added the rank `{role}` to `{member}`!**')
-    
-@role.command()
-@commands.has_permissions(manage_roles=True)
-async def remove(ctx, role: discord.Role, member: discord.Member):
-    await member.remove_roles(role)
-    await ctx.send(f'<:RaluvySucces:489805130963615754> | **I removed the rank `{role}` to `{member}`!**')
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def owo(ctx, *, message=None):
-    if message is None:
-        return await ctx.send("**OwO! What's this?**")
-    await ctx.send(f"""**OwO! {message}**""")
+# More #
 	
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def uwu(ctx, *, message=None):
-    if message is None:
-        return await ctx.send("<a:aUWU:478879639586996224>")
-    await ctx.send(f"""<a:aUWU:478879639586996224> | **{message}**""")
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def wumpus(ctx, *, message=None):
-    if message is None:
-        return await ctx.send('<a:aWumpus:479223216796336148>')
-    await ctx.send('<a:aWumpus:479223216796336148>'.join(message))
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def blobdance(ctx, *, message=None):
-    if message is None:
-        return await ctx.send('<a:ablobyay:464794064579985409>')
-    await ctx.send('<a:ablobyay:464794064579985409>'.join(message))
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def parrot(ctx, *, message=None):
-    if message is None:
-        return await ctx.send('<a:parrot:491311653884002304>')
-    await ctx.send('<a:parrot:491311653884002304>'.join(message))
-
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def support(ctx):
     em = discord.Embed(title="", description="", color=discord.Colour.green())
     em.add_field(name='Join our support server!', value='[here]( https://discord.gg/bazhjYQ )')
     await ctx.send(embed=em)
+
+@bot.command(aliases=['h'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def help(ctx):
+    embed = discord.Embed(title="HELP", description="List commands", color=0xe67e22)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
+    embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban` `softban` `purge` `role`", inline=False)
+    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
+    embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
+    embed.add_field(name=":thinking: More questions?", value="Type `support` for join our server!", inline=False)
+    embed.set_footer(text='Use , before using commands')
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
 
 async def presence():
     await bot.wait_until_ready()
