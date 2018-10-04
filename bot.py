@@ -341,10 +341,12 @@ async def softban(ctx, member: discord.Member = None, *, message=None):
          if member is None:
              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
          if member is not None and message is None:
-             await member.kick(reason=f'Requested by {ctx.author}')
+             await member.ban(reason=f'Requested by {ctx.author}')
+	     await member.unban(reason=f'Requested by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
          if member is not None and message is not None:
-             await member.kick(reason=f'{message}  by {ctx.author}')
+             await member.ban(reason=f'{message}  by {ctx.author}')
+	     await member.unban(reason=f'{message}  by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
 
 		
@@ -360,10 +362,10 @@ async def ban(ctx, member: discord.Member = None, *, message=None):
          if member is None:
              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
          if member is not None and message is None:
-             await member.kick(reason=f'Requested by {ctx.author}')
+             await member.ban(reason=f'Requested by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
          if member is not None and message is not None:
-             await member.kick(reason=f'{message}  by {ctx.author}')
+             await member.ban(reason=f'{message}  by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
 
 		
