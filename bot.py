@@ -331,10 +331,10 @@ async def kick(ctx, member: discord.Member = None, *, message=None):
              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,kick <member>`!**")
         if member is not None and message is None:
              await member.kick(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked!**')
         if member is not None and message is not None:
              await member.kick(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked!**')
 
 @bot.command()
 @commands.has_permissions(ban_members=True)
@@ -349,10 +349,10 @@ async def softban(ctx, member: discord.Member = None):
              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
          if member is not None and message is None:
              await member.kick(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked (softban)!**')
          if member is not None and message is not None:
              await member.kick(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was kicked (softban)!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked (softban)!**')
 
 @bot.command()
 @commands.has_permissions(ban_members=True)
@@ -367,10 +367,10 @@ async def ban(ctx, member: discord.Member = None, *, message=None):
              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
          if member is not None and message is None:
              await member.ban(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
          if member is not None and message is not None:
              await member.ban(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
 	
 	
 @bot.group(aliases=['rank'])
