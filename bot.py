@@ -354,19 +354,19 @@ async def softban(ctx, member: discord.Member = None, *, message=None):
 @commands.has_permissions(ban_members=True)
 async def ban(ctx, member: discord.Member = None, *, message=None):
          if member is ctx.author:
-            return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
+              return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
          if member is ctx.message.guild.owner:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban to Owner!**")
+              await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban to Owner!**")
          if member is ctx.me:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban myself ;-;**")
+              await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban myself ;-;**")
          if member is None:
-             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
+              await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
          if member is not None and message is None:
-             await member.ban(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+              await member.ban(reason=f'Requested by {ctx.author}')
+              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
          if member is not None and message is not None:
-             await member.ban(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
+              await member.ban(reason=f'{message}  by {ctx.author}')
+              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{ctx.author} was banned!**')
 
 		
 @bot.command(aliases= ["whois", "user info", "user_info"])
