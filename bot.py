@@ -242,18 +242,30 @@ async def rage(ctx):
 @bot.command(aliases= ["sinfo", "server info", "server_info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def serverinfo(ctx):
+    c = 0
+    a = 0
+    n = ctx.guild.member_count
+    for i in ctx.guild.members:
+     if i.bot is True:
+      c+=1
+    for i in ctx.guild.members:
+     if i.bot is False:
+      a+=1
     em = discord.Embed(color=discord.Colour.orange())
-    em.add_field(name=':pencil2: | Name', value=f'{ctx.author.guild.name}', inline=True)
-    em.add_field(name=':crown: | Owner', value=f'{ctx.author.guild.owner.mention} [{ctx.author.guild.owner.id}]', inline=True)
-    em.add_field(name=':mountain_snow: | Icon', value='Type `,servericon`', inline=True)
-    em.add_field(name=':beginner: | Roles', value=f'{len(ctx.guild.roles)} | `,sroles`', inline=True)
-    em.add_field(name=':busts_in_silhouette: | Members', value=f'{ctx.guild.member_count}', inline=True)
-    em.add_field(name=':clock1: | Created at', value=ctx.guild.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
-    em.add_field(name=':globe_with_meridians: | Region', value=ctx.guild.region, inline=True)
+    em.add_field(name=':pencil2: Name', value=f'{ctx.author.guild.name}', inline=True)
+    em.add_field(name=':crown: Owner', value=f'{ctx.author.guild.owner.mention} [{ctx.author.guild.owner.id}]', inline=True)
+    em.add_field(name=':mountain_snow: Icon', value='Type `,servericon`', inline=True)
+    em.add_field(name=':beginner: Roles', value=f'{len(ctx.guild.roles)} `,sroles`', inline=True)
+    em.add_field(name=':busts_in_silhouette: Members', value=f'{n}', inline=True)
+    em.add_field(name=':robot: Bots', value=f'{c}', inline=True)
+    em.add_field(name=':bust_in_silhouette: Peoples', value=f'{a}', inline=True)
+    em.add_field(name=':clock1: Created at', value=ctx.guild.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
+    em.add_field(name=':globe_with_meridians: Region', value=ctx.guild.region, inline=True)
     em.set_thumbnail(url=ctx.guild.icon_url)
     em.set_footer(text=f'ID: {ctx.guild.id}')
     em.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=em)
+
 
 @bot.command(aliases =['sicon'])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -415,24 +427,24 @@ async def avatar(ctx, member: discord.Member=None):
     await ctx.send(embed=em)
 	
 	
-@bot.command(aliases= ["whois", "user info", "user_info"])
-@commands.cooldown(1, 5, commands.BucketType.user)
+@bot.command(aliases= ["whois", "uinfo", "playerinfo", "user info"])
 async def userinfo(ctx, member: discord.Member=None):
     if member is None:
 	    member = (ctx.author)
     embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
     embed.set_author(name="Who is?")
-    embed.add_field(name=":bust_in_silhouette: | Name", value=member.name)
-    embed.add_field(name=":robot: | Is this a bot?", value=member.bot)
-    embed.add_field(name=":atm: | Tag", value=member.discriminator)
-    embed.add_field(name=":eject: | Top Role", value=member.top_role)
-    embed.add_field(name=":pencil2: | Nick", value=member.nick)
-    embed.add_field(name=":inbox_tray: | Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
-    embed.add_field(name=":clock1: | Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name=":bust_in_silhouette: Name", value=member.name)
+    embed.add_field(name="Is this a bot?", value=member.bot)
+    embed.add_field(name=":atm: Tag", value=member.discriminator)
+    embed.add_field(name=":eject: Top Role", value=member.top_role)
+    embed.add_field(name=":pencil2: Nick", value=member.nick)
+    embed.add_field(name=":inbox_tray: Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name=":clock1: Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name=":beginner:  Roles", value=', '.join(g.name for g in member.roles))
     embed.set_thumbnail(url=member.avatar_url)
     embed.set_footer(text=f'ID: {member.id}')
     embed.timestamp = datetime.datetime.utcnow()
-    
+
     await ctx.send(embed=embed)
 
 
@@ -470,7 +482,7 @@ async def presence():
                 if u.bot == False:
                     a = a + 1
 
-        await bot.change_presence(activity=discord.Game(name="pokemon go everyday || ,help"))
+        await bot.change_presence(activity=discord.Game(name="i like cookies || ,help"))
         await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=",invite || ,help"))
         await sleep(30)
@@ -478,8 +490,10 @@ async def presence():
         await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{len(bot.users)} users || ,help"))
         await sleep(30)
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers | ,help"))
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers || ,help"))
         await sleep(30)
+	await bot.change_presence(activity=discord.Game(name="My name is ROUVY || ,help"))
+	await sleep(30)
 	
 
 bot.loop.create_task(presence())
