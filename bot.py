@@ -492,8 +492,6 @@ async def presence():
         await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers || ,help"))
         await sleep(30)
-	await bot.change_presence(activity=discord.Game(name="My name is ROUVY || ,help"))
-	await sleep(30)
 	
 
 bot.loop.create_task(presence())
