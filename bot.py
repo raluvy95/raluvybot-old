@@ -70,7 +70,8 @@ async def say(ctx, *, message):
 @bot.command(aliases=['emoji_info', 'emoji info'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def emojiinfo(ctx, emoji: discord.Emoji):
-    await ctx.send(f'`Name:` {emoji.name}\n`ID:` {emoji.id}\n`Preview:` {emoji} (`{emoji}`)\n`URL:` {emoji.url}')
+    await ctx.send(f'`Name:` {emoji.name}\n`ID:` {emoji.id}\n`Preview:` {emoji} (`{emoji}`)\n`URL:` {emoji.url}\n`Created at:` {emoji.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p")}')
+
 
 @bot.command(aliases=['google'])
 @commands.cooldown(1, 5, commands.BucketType.user)
