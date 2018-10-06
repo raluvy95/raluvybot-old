@@ -259,7 +259,7 @@ async def serverinfo(ctx):
     em.add_field(name=':beginner: Roles', value=f'{len(ctx.guild.roles)} `,sroles`', inline=True)
     em.add_field(name=':busts_in_silhouette: Members', value=f'{n}', inline=True)
     em.add_field(name=':robot: Bots', value=f'{c}', inline=True)
-    em.add_field(name=':bust_in_silhouette: Peoples', value=f'{a}', inline=True)
+    em.add_field(name=':bust_in_silhouette: People', value=f'{a}', inline=True)
     em.add_field(name=':clock1: Created at', value=ctx.guild.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
     em.add_field(name=':globe_with_meridians: Region', value=ctx.guild.region, inline=True)
     em.set_thumbnail(url=ctx.guild.icon_url)
