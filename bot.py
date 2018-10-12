@@ -456,11 +456,11 @@ async def userinfo(ctx, member: discord.Member=None):
 
 # More #
 	
-@bot.command(hidden=True)
+@bot.command(hidden=True, aliases=['set_playing', 'set playing'])
 async def setplaying(ctx, *, message = None):
     if message is None:
         return await ctx.send("Please put message what's playing bot...")
-    await bot.change_presence(activity=discord.Game(name=f"{message} || ??help"))
+    await bot.change_presence(activity=discord.Game(name=f"{message} || ,help"))
     await ctx.send(":white_check_mark:", delete_after=2)		   
 		   
 @bot.command()
