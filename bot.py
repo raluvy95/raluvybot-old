@@ -490,7 +490,7 @@ async def presence():
         await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=",invite || ,help"))
         await sleep(30)
-        await bot.change_presence(activity=discord.Game(name="with my favorite movie || ,help"))
+        await bot.change_presence(activity=discord.Game(name="Noice || ,help"))
         await sleep(30)
         await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name=f"{len(bot.users)} users || ,help"))
         await sleep(30)
