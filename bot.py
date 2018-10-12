@@ -351,7 +351,7 @@ async def kick(ctx, member: discord.Member = None, *, message=None):
 
 @bot.command()
 @commands.has_permissions(ban_members=True)
-async def softban(ctx, member: discord.Member = None, message = None):
+async def softban(ctx, member: discord.Member = None, *, message = None):
          if member is ctx.author:
              return await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban you! ;-;**")
          if member is ctx.message.guild.owner:
