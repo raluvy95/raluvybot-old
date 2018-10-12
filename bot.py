@@ -456,6 +456,13 @@ async def userinfo(ctx, member: discord.Member=None):
 
 # More #
 	
+@bot.command(hidden=True)
+async def setplaying(ctx, *, message = None):
+    if message is None:
+        return await ctx.send("Please put message what's playing bot...")
+    await bot.change_presence(activity=discord.Game(name=f"{message} || ??help"))
+    await ctx.send(":white_check_mark:", delete_after=2)		   
+		   
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def support(ctx):
