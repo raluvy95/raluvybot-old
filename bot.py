@@ -459,9 +459,9 @@ async def userinfo(ctx, member: discord.Member=None):
 @bot.command(hidden=True, aliases=['set_playing', 'set playing'])
 async def setplaying(ctx, *, message = None):
     if message is None:
-        return await ctx.send("Please put message what's playing bot...")
+        return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please put message what's playing bot...**")
     await bot.change_presence(activity=discord.Game(name=f"{message} || ,help"))
-    await ctx.send(":white_check_mark:", delete_after=2)		   
+    await ctx.send("<:RaluvySucces:489805130963615754>", delete_after=2)		   
 		   
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
