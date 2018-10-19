@@ -233,7 +233,11 @@ async def momsay(ctx, *, message=None):
 async def jesussay(ctx, *, message=None):
     if message is None:
         return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please put the message what jesus says.**')
-    await ctx.send(f'Jesus says: **{message}**')
+    embed=discord.Embed(color=0xd2cd68)
+    embed.set_thumbnail(url="https://i.kym-cdn.com/entries/icons/facebook/000/009/556/jesus-bleu-mauve.jpg")
+    embed.add_field(name=Jesus says, value=message, inline=False)
+    embed.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=embed)
 
 @bot.command()
 async def verify(ctx):
