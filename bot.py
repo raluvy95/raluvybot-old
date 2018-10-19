@@ -235,6 +235,18 @@ async def jesussay(ctx, *, message=None):
         return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please put the message what jesus says.**')
     await ctx.send(f'Jesus says: **{message}**')
 
+@bot.command()
+async def verify(ctx):
+  if ctx.author.guild.id == 464783042310045707:
+    await ctx.message.delete()
+    role = discord.utils.get(ctx.guild.roles, id=464786254790393866)
+    user = ctx.message.author
+    await user.add_roles(role)
+    role = discord.utils.get(ctx.guild.roles, id=498186204353921035)
+    user = ctx.message.author
+    await user.remove_roles(role)
+  if ctx.author.guild.id != 464783042310045707:
+        return
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
