@@ -67,6 +67,13 @@ async def servers(ctx):
 async def say(ctx, *, message):
     await ctx.send(message)
 
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def sayd(ctx, *, message):
+    await ctx.message.delete()
+    await ctx.send(message)
+
+
 @bot.command(aliases=['emoji_info', 'emoji info'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def emojiinfo(ctx, emoji: discord.Emoji):
@@ -475,8 +482,8 @@ async def support(ctx):
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="List commands", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
-    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
-    embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban` `softban` `purge` `role`", inline=False)
+    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
+    embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
     embed.add_field(name=":thinking: More questions?", value="Type `support` for join our server!", inline=False)
