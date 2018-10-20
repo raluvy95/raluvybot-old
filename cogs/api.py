@@ -19,9 +19,9 @@ class API():
 
 
 
-	@commands.command(aliases=['shiba'])
+	@commands.command(aliases=['shibainu'])
 	@commands.cooldown(1, 5, commands.BucketType.user)
-	async def doge(self, ctx):
+	async def shiba(self, ctx):
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get('http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=false') as r:
 				res = await r.json()
