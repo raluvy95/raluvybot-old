@@ -79,6 +79,14 @@ async def sayd(ctx, *, message):
 async def emojiinfo(ctx, emoji: discord.Emoji):
     await ctx.send(f'`Name:` {emoji.name}\n`ID:` {emoji.id}\n`Preview:` {emoji} (`{emoji}`)\n`URL:` {emoji.url}\n`Created at:` {emoji.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p")}')
 
+@bot.command()
+async def doge(ctx, *message):
+    i = ('http://dogr.io/' + '/'.join(message) + '/.png?split=false')
+    em = discord.Embed(title="Wow, much doge, such amazing!", color=0xe67e22)
+    em.set_image(url=i)
+    em.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=em)
+
 
 @bot.command(aliases=['google'])
 @commands.cooldown(1, 5, commands.BucketType.user)
