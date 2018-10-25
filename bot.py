@@ -577,7 +577,7 @@ async def help(ctx):
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
-    embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `poke`", inline=False)
+    embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
     embed.add_field(name=":thinking: More questions?", value="Type `support` for join our server!", inline=False)
