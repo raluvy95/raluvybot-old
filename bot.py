@@ -59,6 +59,105 @@ async def invite(ctx):
     await ctx.send("""**You can add me here ->** http://bit.ly/InviteRaluvyBot""")
 
 @bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def hug(ctx, member: discord.Member=None):
+    a = (random.choice(['https://media.giphy.com/media/xUPGchPtx9E4Ijht9S/giphy.gif', 'https://i.imgur.com/r9aU2xv.gif', 'https://media.giphy.com/media/14aBJO7py75MD6/giphy.gif', 'https://66.media.tumblr.com/19e9210e27061fd20b58078cad8c9552/tumblr_nj5nw0LHbw1r7eta3o1_500.gif', 'https://media.giphy.com/media/3oz8xU3bnghA8WzEGI/giphy.gif', 'https://vignette.wikia.nocookie.net/degrassi/images/2/29/Beckdam_hug.gif/revision/latest?cb=20130825231225', 'https://media.giphy.com/media/143v0Z4767T15e/giphy.gif', 'https://i.imgur.com/nrdYNtL.gif', 'https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif', 'https://media.giphy.com/media/DjczAlIcyK1Co/giphy.gif']))
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"Awww! {member.name}, you got a hug by {ctx.author.name}!", color=0xe67e22)
+      em.set_image(url=a)
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def kiss(ctx, member: discord.Member=None):
+    a = (random.choice(['https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865', 'https://media.giphy.com/media/Gj8bn4pgTocog/giphy.gif', 'https://media.giphy.com/media/KH1CTZtw1iP3W/giphy.gif', 'https://media.giphy.com/media/ONq87vZz4626k/giphy.gif', 'https://lifeo.ru/wp-content/uploads/gif-anime-kisses-13.gif', 'http://37.media.tumblr.com/42f96e0adb59440843c94e45650afd19/tumblr_n5mbsq844s1tzpao0o1_500.gif', 'https://media.giphy.com/media/ll5leTSPh4ocE/giphy.gif', 'http://www.lovethisgif.com/uploaded_images/41239-Anime-Cheek-Kiss-Gif-Karen-Kissing-Shino-lewd-.gif', 'https://i.pinimg.com/originals/33/55/7f/33557fcbfbf21b4dd20b34babb5db7b5.gif', 'https://i.imgur.com/NkfsJV7.gif']))
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"Awww! {member.name}, you got a kiss by {ctx.author.name}!", color=0xe67e22)
+      em.set_image(url=a)
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def poke(ctx, member: discord.Member=None):
+    a = (random.choice(['https://media1.tenor.com/images/76e377271bf00ba61d954b2752713596/tenor.gif?itemid=5075308', 'https://media.giphy.com/media/WvVzZ9mCyMjsc/giphy.gif', 'https://66.media.tumblr.com/913f6c8b397a28cce5d739d9e5440f13/tumblr_on0ks5LR3P1ridyfoo1_500.gif', 'https://media1.tenor.com/images/fd46d903c4a20a7e82519a78f15b2750/tenor.gif?itemid=8562185', 'https://media1.tenor.com/images/ab936c887562756472f83850426bf6ef/tenor.gif?itemid=11956062', 'https://i.gifer.com/S00v.gif']))
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"Poke {member.name}!", color=0xe67e22)
+      em.set_image(url=a)
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def pat(ctx, member: discord.Member=None):
+    a = (random.choice(['https://media1.tenor.com/images/68d981347bf6ee8c7d6b78f8a7fe3ccb/tenor.gif?itemid=5155410', 'https://thumbs.gfycat.com/AgileHeavyGecko-max-1mb.gif', 'https://i.imgur.com/2lacG7l.gif', 'https://img.fireden.net/a/image/1503/79/1503792695094.gif', 'https://thumbs.gfycat.com/MassiveNeglectedAustraliankestrel-small.gif', 'https://pa1.narvii.com/6215/ed0176937f5de9412f3408cdfd4c6d88b1ec0df1_hq.gif', 'https://i.pinimg.com/originals/2e/62/cd/2e62cd7491be4ec9f0ec210d648b80fd.gif']))
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"Pat {member.name}! :3", color=0xe67e22)
+      em.set_image(url=a)
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def slap(ctx, member: discord.Member=None):
+    a = (random.choice(['https://media.giphy.com/media/LB1kIoSRFTC2Q/giphy.gif', 'https://media1.tenor.com/images/85722c3e51d390e11a0493696f32fb69/tenor.gif?itemid=5463215', 'https://media1.tenor.com/images/85722c3e51d390e11a0493696f32fb69/tenor.gif?itemid=5463215', 'https://media1.tenor.com/images/b6d8a83eb652a30b95e87cf96a21e007/tenor.gif?itemid=10426943', 'https://i.gifer.com/2Vj5.gif', 'https://i.imgur.com/Agwwaj6.gif', 'https://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-14.gif']))
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"Oh.. {member.name}, You got slap by {ctx.author.name}!", color=0xe67e22)
+      em.set_image(url=a)
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+
+
+@bot.group()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def lenny(ctx):
+    if ctx.invoked_subcommand is None:
+        return await ctx.send('( ͡° ͜ʖ ͡°)')
+
+@lenny.command()
+async def help(ctx):
+    await ctx.send('```Help lenny\n\nOriginal - ( ͡° ͜ʖ ͡°)\nHug - (つ ͡° ͜ʖ ͡°)つ\nAttack - (∩ ͡ ° ʖ ͡ °) ⊃-(===>\nFliptable - ( ͡° ͜ʖ ͡°) ╯︵ ┻─┻\nGlasses - ᕙ(▀̿̿Ĺ̯̿̿▀̿ ̿) ᕗ\nLove - ( ͡♥ 3 ͡♥)```')
+
+@lenny.command()
+async def original(ctx):
+    await ctx.send('( ͡° ͜ʖ ͡°)')
+
+@lenny.command()
+async def hug(ctx):
+    await ctx.send('(つ ͡° ͜ʖ ͡°)つ')
+
+@lenny.command()
+async def fliptable(ctx):
+    await ctx.send('( ͡° ͜ʖ ͡°) ╯︵ ┻─┻')
+
+@lenny.command()
+async def attack(ctx):
+    await ctx.send('(∩ ͡ ° ʖ ͡ °) ⊃-(===>')
+
+@lenny.command()
+async def glasses(ctx):
+    await ctx.send('ᕙ(▀̿̿Ĺ̯̿̿▀̿ ̿) ᕗ')
+
+@lenny.command()
+async def love(ctx):
+    await ctx.send('( ͡♥ 3 ͡♥)')
+
+
+@bot.command()
 async def servers(ctx):
     await ctx.send(f'{len(bot.guilds)} Servers!\n```py\n"' + '"\n"'.join(g.name for g in bot.guilds)+ '"```')
 
@@ -80,6 +179,7 @@ async def emojiinfo(ctx, emoji: discord.Emoji):
     await ctx.send(f'`Name:` {emoji.name}\n`ID:` {emoji.id}\n`Preview:` {emoji} (`{emoji}`)\n`URL:` {emoji.url}\n`Created at:` {emoji.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p")}')
 
 @bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
 async def doge(ctx, *message):
     i = ('http://dogr.io/' + '/'.join(message) + '/.png?split=false')
     em = discord.Embed(title="Wow, much doge, such amazing!", color=0xe67e22)
@@ -103,10 +203,6 @@ async def search(ctx, *, query):
             URL = URL + "+"+ w
     await ctx.send(URL)
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def love(ctx):
-    await ctx.send("(˵ ͡~ ͜ʖ ͡°˵)ﾉ⌒♡*:･。.")
 
 @bot.command(aliases= ["number"])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -199,18 +295,9 @@ async def ping(ctx):
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
-async def lenny(ctx):
-    await ctx.send("( ͡° ͜ʖ ͡°)")
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
 async def shrug(ctx):
     await ctx.send("¯\_(ツ)_/¯")
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def hug(ctx):
-    await ctx.send("(つ ͡° ͜ʖ ͡°)つ")
 
 @bot.command(name='8ball')
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -224,10 +311,6 @@ async def lball(ctx, question = None):
 async def kys(ctx):
     await ctx.send("Nu te sinucide :)")
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def kiss(ctx):
-    await ctx.send("( ˶˘ ³˘(˵ ͡° ͜ʖ ͡°˵)♡")
 
 @bot.command(aliases=['mom'])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -265,11 +348,6 @@ async def verify(ctx):
 async def here(ctx):
     await ctx.send("""<:here4:487208268964560896><:here3:487208303584346112><:here2:487208337176526858><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384>""")
 
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def rage(ctx):
-    await ctx.send("ヽ( ಠ益ಠ )ﾉ")
 
 @bot.command(aliases= ["sinfo", "server info", "server_info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -315,11 +393,6 @@ async def serverroles(ctx):
     em.add_field(name=f'Server Roles [{len(ctx.guild.roles)}]', value=', '.join(g.name for g in ctx.guild.roles))
     await ctx.send(embed=em)
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def tableflip(ctx):
-    await ctx.send("(╯°□°）╯︵ ┻━┻")
-
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -333,10 +406,6 @@ async def kill(ctx, member: discord.Member=None):
     if member is not None:
         await ctx.send(random.choice([f':gun: | **{ctx.author.mention} wanted to kill {member.mention} just as he stumbled and struck his head with a stone**', f':gun: | **{member.mention} died from a murderer**', f':gun: | **{member.mention} gave too much rage to Clash Royale until he fainted and died**', f':gun: | **{member.mention} was pushed by {ctx.author.mention} from the 5th floor and died**', f':gun: **{member.mention}, The pregnancy of the table just fell asleep and caught fire**', f':gun: | **{member.mention} was shot by {ctx.author.mention}**', f':gun: **After a hard attempt to kill him {member.mention} , {ctx.author.mention} was arrested**']))
 
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def unflip(ctx):
-    await ctx.send("┬─┬ ノ( ゜-゜ノ)")
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -506,7 +575,7 @@ async def support(ctx):
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="List commands", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
-    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `kiss`  `rage`  `unflip`  `tableflip`  `love`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
+    embed.add_field(name=":ok: Text", value="`lenny`  `hug`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `avatar`  `search`  `invite`", inline=False)
