@@ -156,6 +156,14 @@ async def glasses(ctx):
 async def love(ctx):
     await ctx.send('( ͡♥ 3 ͡♥)')
 
+@bot.command()
+async def xd(ctx, message=None):
+    if message is None:
+        return await ctx.send("Please put a message...")
+    a=message
+    await ctx.send(f'```{a}           {a}    {a} {a}\n  {a}       {a}      {a}    {a}\n    {a}   {a}        {a}     {a}\n        {a}            {a}     {a}\n    {a}   {a}        {a}     {a}\n  {a}       {a}      {a}    {a}\n{a}           {a}    {a} {a}```')
+
+
 
 @bot.command()
 async def servers(ctx):
@@ -575,7 +583,7 @@ async def support(ctx):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="More questions? Type `support` for join our server!", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
