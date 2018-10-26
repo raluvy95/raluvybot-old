@@ -338,8 +338,9 @@ async def verify(ctx):
     user = ctx.message.author
     await user.add_roles(role)
     role = discord.utils.get(ctx.guild.roles, id=498186204353921035)
+    role2 = discord.utils.get(ctx.guild.roles, id=505303297935015936)
     user = ctx.message.author
-    await user.remove_roles(role)
+    await user.remove_roles(role, role2)
   if ctx.author.guild.id != 464783042310045707:
         return
 
