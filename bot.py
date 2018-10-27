@@ -23,6 +23,7 @@ async def on_ready():
  print('Logged in as')
  print(bot.user.name)
  print(bot.user.id)
+ print("Discord.py API version:", discord.__version__)
 
 @bot.listen()
 async def on_command_error(ctx, error):
@@ -120,6 +121,13 @@ async def slap(ctx, member: discord.Member=None):
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
+
+@bot.command()
+async def flipcoin(ctx):
+    a = (ctx.author.mention)
+    msg = await ctx.send('Flipping...')
+    await asyncio.sleep(1.5)
+    await msg.edit(content=random.choice([f"{a}, **Heads!**", f"{a}, **Tails!**"]))
 
 
 @bot.group()
