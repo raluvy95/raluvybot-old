@@ -175,7 +175,8 @@ async def xd(ctx, message=None):
 
 @bot.command()
 async def servers(ctx):
-    await ctx.send(f'{len(bot.guilds)} Servers!\n```py\n"' + '"\n"'.join(g.name for g in bot.guilds)+ '"```')
+    await ctx.message.delete()
+    await ctx.send(f'{len(bot.guilds)} Servers!\n```py\n"' + '"\n"'.join(g.name for g in bot.guilds)+ '"```', delete_after=5)
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
