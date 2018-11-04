@@ -601,7 +601,7 @@ async def support(ctx):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="More questions? Type `support` for join our server!", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
