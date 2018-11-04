@@ -66,7 +66,7 @@ async def hug(ctx, member: discord.Member=None):
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
-      em = discord.Embed(title=f"Awww! {member.name}, you got a hug by {ctx.author.name}!", color=0xe67e22)
+      em = discord.Embed(title=f"Hugs {member.name}!", color=0xe67e22)
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
@@ -79,7 +79,7 @@ async def kiss(ctx, member: discord.Member=None):
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
-      em = discord.Embed(title=f"Awww! {member.name}, you got a kiss by {ctx.author.name}!", color=0xe67e22)
+      em = discord.Embed(title=f"Awwww!", color=0xe67e22)
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
@@ -92,7 +92,7 @@ async def poke(ctx, member: discord.Member=None):
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
-      em = discord.Embed(title=f"Poke {member.name}!", color=0xe67e22)
+      em = discord.Embed(title=f"Poke! :3", color=0xe67e22)
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
@@ -105,7 +105,7 @@ async def pat(ctx, member: discord.Member=None):
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
-      em = discord.Embed(title=f"Pat {member.name}! :3", color=0xe67e22)
+      em = discord.Embed(title=f"Pats {member.name}! :3", color=0xe67e22)
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
@@ -117,7 +117,7 @@ async def slap(ctx, member: discord.Member=None):
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
-      em = discord.Embed(title=f"Oh.. {member.name}, You got slap by {ctx.author.name}!", color=0xe67e22)
+      em = discord.Embed(title=f"* Slaps {member.name} *", color=0xe67e22)
       em.set_image(url=a)
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
