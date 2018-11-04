@@ -263,6 +263,15 @@ async def uwu(ctx, *, message=None):
     if message is None:
         return await ctx.send("<a:aUWU:478879639586996224>")
     await ctx.send(f"""<a:aUWU:478879639586996224> | **{message}**""")
+		   
+@bot.command(aliases=['slot'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def slots(ctx):
+       t = await ctx.send('Spinning...')
+       await asyncio.sleep(1)
+       a = (random.choice(['------------------\n:soccer: : :tangerine: : :chocolate_bar:\n:potato: : :chocolate_bar: : :watermelon:<\n:tangerine: : :soccer: : :seven:\n------------------\n\n**You Lose! :(**', '------------------\n:soccer: : :tangerine: : :seven:\n:chocolate_bar: : :chocolate_bar: : :chocolate_bar:<\n:soccer: : :watermelon: : :seven:\n------------------\n\n**You Win! :D**', '------------------\n:chocolate_bar: : :soccer: : :potato:\n:seven: : :seven: : :seven:<\n:soccer: : :chocolate_bar: : :watermelon:\n------------------\n\n**You Win! :D**', '------------------\n:chocolate_bar: : :potato: : :soccer:\n:potato: : :tangerine: : :seven:<\n:soccer: : :chocolate_bar: : :tangerine:\n------------------\n\n**You Lose! :(**'])) 
+       await t.edit(content=a)
+    
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
