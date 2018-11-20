@@ -183,6 +183,18 @@ async def servers(ctx):
 async def say(ctx, *, message):
     await ctx.send(message)
 
+"""
+@bot.command(aliases=['howgay'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def gay(ctx, member: discord.Member=None):
+        a = (random.choice(['1', '0', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '69', '70', '75', '80', '85', '90', '95', '99', '99,9', '100', '101']))
+     if member is None:
+	member = ctx.author
+     embed.add_field(name=f"Is {member.name} gay?", value=f"{member.name} is **{a}%** gay! ga:gay_pride_flag:, inline=False)
+     embed.timestamp = datetime.datetime.utcnow()
+     await ctx.send(embed=embed)
+"""
+
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def sayd(ctx, *, message):
@@ -548,7 +560,6 @@ async def purge(ctx, number: int):
     await ctx.message.delete()
     await ctx.message.channel.purge(limit=number)
     await ctx.send(f'<:RaluvySucces:489805130963615754> | **{int(number)} message deleted**', delete_after=5)
-	
 	
 	
 
