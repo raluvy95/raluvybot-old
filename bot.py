@@ -588,6 +588,25 @@ async def avatar(ctx, member: discord.Member=None):
     em.set_image(url=member.avatar_url)
     await ctx.send(embed=em)
 	
+@bot.command()
+@commands.cooldown(1, 3, commands.BucketType.user)
+async def membercount(ctx):
+    c = 0
+    a = 0
+    n = ctx.guild.member_count
+    for i in ctx.guild.members:
+     if i.bot is True:
+      c+=1
+    for i in ctx.guild.members:
+     if i.bot is False:
+      a+=1
+    em = discord.Embed(color=discord.Colour.orange())
+    em.add_field(name='Members', value=f'{n}', inline=True)
+    em.add_field(name='Bots', value=f'{c}', inline=True)
+    em.add_field(name='People', value=f'{a}', inline=True)
+    em.timestamp = datetime.datetime.utcnow()
+    await ctx.send(embed=em)
+
 	
 @bot.command(aliases= ["whois", "uinfo", "playerinfo", "user info"])
 async def userinfo(ctx, member: discord.Member=None):
@@ -632,11 +651,11 @@ async def support(ctx):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="More questions? Type `support` for join our server!", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `achievement`  `dice`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
-    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `serverinfo`  `userinfo`  `stats`", inline=False)
+    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `membercount`  `serverinfo`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `flipcoin`  `avatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
