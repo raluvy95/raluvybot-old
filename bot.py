@@ -210,11 +210,25 @@ async def emojiinfo(ctx, emoji: discord.Emoji):
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def doge(ctx, *message):
-    i = ('http://dogr.io/' + '/'.join(message) + '/.png?split=false')
-    em = discord.Embed(title="Wow, much doge, such amazing!", color=0xe67e22)
-    em.set_image(url=i)
-    em.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=em)
+    if message is None:
+	    return await ctx.send("**Please put a message to run this command!**")
+    if message is not None:
+            i = ('http://dogr.io/' + '/'.join(message) + '/.png?split=false')
+            em = discord.Embed(title="Wow, much doge, such amazing!", color=0xe67e22)
+            em.set_image(url=i)
+            em.timestamp = datetime.datetime.utcnow()
+            await ctx.send(embed=em)
+
+@bot.command(aliases=['mc', 'minecraft'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def achievement(ctx, *message):
+    if message is None:
+	    return await ctx.send("**Please put a message to run this command!**")
+    if message is not None:
+            i = ('https://www.minecraftskinstealer.com/achievement/a.php?i=16&h=Achievement+get%21&t=' + '+'.join(message))
+            em = discord.Embed(title="", color=0xe67e22)
+            em.set_image(url=i)
+            await ctx.send(embed=em)
 
 
 @bot.command(aliases=['google'])
@@ -619,7 +633,7 @@ async def support(ctx):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="More questions? Type `support` for join our server!", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `dice`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `achievement`  `dice`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
