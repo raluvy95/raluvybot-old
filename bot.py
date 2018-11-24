@@ -172,12 +172,6 @@ async def xd(ctx, message=None):
     await ctx.send(f'```{a}           {a}    {a} {a}\n  {a}       {a}      {a}    {a}\n    {a}   {a}        {a}     {a}\n        {a}            {a}     {a}\n    {a}   {a}        {a}     {a}\n  {a}       {a}      {a}    {a}\n{a}           {a}    {a} {a}```')
 
 
-
-@bot.command()
-async def servers(ctx):
-    await ctx.message.delete()
-    await ctx.send(f'{len(bot.guilds)} Servers!\n```py\n"' + '"\n"'.join(g.name for g in bot.guilds)+ '"```', delete_after=5)
-
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def say(ctx, *, message):
@@ -287,14 +281,7 @@ async def owo(ctx, *, message=None):
     if message is None:
         return await ctx.send("**OwO! What's this?**")
     await ctx.send(f"""**OwO! {message}**""")
-	
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def uwu(ctx, *, message=None):
-    if message is None:
-        return await ctx.send("<a:aUWU:478879639586996224>")
-    await ctx.send(f"""<a:aUWU:478879639586996224> | **{message}**""")
-		   
+			   
 @bot.command(aliases=['slot'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def slots(ctx):
@@ -364,17 +351,6 @@ async def lball(ctx, question = None):
 	if question is not None:
 		await ctx.send(random.choice(['● It is certain.', '● It is decidedly so.', '● Without a doubt.', '● Yes - definitely.', '● You may rely on it', '● As I see it, yes.', '● Most likely.', '● Outlook good.', '● Yes.', '● Signs point to yes.', '● Reply hazy, try again', '● Ask again later.', '● Better not tell you now.', '● Cannot predict now.', '● Concentrate and ask again.', '● Don`t count on it.', '● My reply is no.', '● My sources say no', '● Outlook not so good.', '● Very doubtful.' ]))
 		
-@bot.command()
-async def kys(ctx):
-    await ctx.send("Nu te sinucide :)")
-
-
-@bot.command(aliases=['mom'])
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def momsay(ctx, *, message=None):
-    if message is None:
-        return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please put the message what mom says.**')
-    await ctx.send(f'Mom: **{message}**     Me: **no.**')
 
 @bot.command(aliases=['jesus'])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -400,11 +376,6 @@ async def verify(ctx):
     await user.remove_roles(role, role2)
   if ctx.author.guild.id != 464783042310045707:
         return
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def here(ctx):
-    await ctx.send("""<:here4:487208268964560896><:here3:487208303584346112><:here2:487208337176526858><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384><:here1:487208364972048384>""")
 
 
 @bot.command(aliases= ["sinfo", "server info", "server_info"])
@@ -652,11 +623,11 @@ async def support(ctx):
 async def help(ctx):
     embed = discord.Embed(title="HELP", description="More questions? Type `support` for join our server!", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
-    embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `uwu`  `momsay`  `jesussay`  `clap`  `sayd`  `say`  `space`  `here`  `owo`  `wumpus`  `parrot`", inline=False)
+    embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `membercount`  `serverinfo`  `userinfo`  `stats`", inline=False)
-    embed.add_field(name=":pushpin: Utility", value="`ping`  `servers`  `randomnumber`  `flipcoin`  `avatar`  `search`  `invite`", inline=False)
+    embed.add_field(name=":pushpin: Utility", value="`ping`  `randomnumber`  `flipcoin`  `avatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
