@@ -329,6 +329,14 @@ async def choose(ctx, option1, option2):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def emoji(ctx):
     await ctx.send(random.choice(bot.emojis))
+		   
+@bot.command(aliases=['emojiavatar', 'iconemoji', 'avataremoji'])
+@commands.cooldown(1, 3, commands.BucketType.user)
+async def emojiicon(ctx, emoji: discord.Emoji):
+    em = discord.Embed(color=discord.Colour.orange())
+    em.set_image(url = f"{emoji.url}")
+    await ctx.send(embed=em)
+
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
