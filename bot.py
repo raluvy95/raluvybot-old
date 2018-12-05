@@ -8,6 +8,7 @@ from discord import opus
 import async_timeout
 from random import randint
 from discord.ext import commands
+from discord.utils import find
 from asyncio import sleep
 import logging
 import os
@@ -18,6 +19,16 @@ bot.remove_command('help')
 bot.load_extension("cogs.admin")
 bot.load_extension("cogs.api")
     
+@bot.event
+async def on_guild_join(guild):
+    print (f"+1 {guild.name}| ID {guild.id}")
+    general = find(lambda x: x.name == 'general',  guild.text_channels)
+    if general and general.permissions_for(guild.me).send_messages:
+        await general.send('**Thanks for added me! <a:ablobdancewhite:464794007755685898>\nMy prefix is `,` Use `,help` for list commands!\nSo if you found a bug/glitch command(s) or have a question about this bot, use `,support` for join our support server! Enjoy!** :hugging:')
+@bot.event
+async def on_guild_remove(guild):
+    print (f"-1 {guild.name}| ID {guild.id}")
+	
 @bot.event
 async def on_ready():
  print('Logged in as')
