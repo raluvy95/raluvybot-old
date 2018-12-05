@@ -58,13 +58,6 @@ async def on_message(message):
     else:
         await bot.process_command(message)
 
-@bot.listen()
-async def on_message(message):
-    if message.content.lower() == '<@390540063609454593>' and message.author != bot.user:
-        await message.channel.send("**Raluvy is away**, Please... don't ping me. ;w;")
-    else:
-        await bot.process_command(message)
-
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def invite(ctx):
