@@ -11,7 +11,10 @@ from discord.ext import commands
 from discord.utils import find
 from asyncio import sleep
 import logging
+import time
 import os
+
+start_time = time.time()
 
 bot = commands.Bot(command_prefix=',')
 logging.basicConfig(level='INFO')
@@ -456,11 +459,16 @@ async def cplm(ctx):
 @bot.command(aliases=['about', 'info', 'botinfo'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def stats(ctx):
+    current_time = time.time()
+    difference = int(round(current_time - start_time))
+    text = str(datetime.timedelta(seconds=difference))
+		   
     embed = discord.Embed(title="Stats Bot", color=0xe67e22)
-    embed.add_field(name="<:RaluvyUsers:489805123191701504> | Total Users", value=len(bot.users), inline=True)
-    embed.add_field(name="<:RaluvyServers:489805145757188097> | Total Servers", value=len(bot.guilds), inline=True)
+    embed.add_field(name="<:RaluvyUsers:489805123191701504> Total Users", value=len(bot.users), inline=True)
+    embed.add_field(name="<:RaluvyServers:489805145757188097> Total Servers", value=len(bot.guilds), inline=True)
     embed.add_field(name=":crown: | Owner Bot", value=f'<@390540063609454593>', inline=True)
-    embed.add_field(name=':clock1: | Created at', value=ctx.me.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name="Uptime", value=text)
+    embed.add_field(name='Created at', value=ctx.me.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
     embed.add_field(name="Library", value="<:RaluvyPython:489805100420694016> discord.py", inline=True)
     embed.add_field(name="Discord.py API Version", value=discord.__version__, inline=True)
     embed.set_thumbnail(url=ctx.me.avatar_url)
