@@ -25,13 +25,35 @@ bot.load_extension("cogs.api")
 @bot.event
 async def on_guild_join(guild):
     print (f"+1 {guild.name}| ID {guild.id}")
+    em = discord.Embed(title=f"+1 server (Total: {len(bot.guilds)})", color=0xe67e22)
+    em.add_field(name="Name Server", value=guild.name, inline=True)
+    em.add_field(name="ID", value=guild.id, inline=True)
+    em.add_field(name="Owner Server", value=guild.owner, inline=True)
+    em.add_field(name="Members", value=guild.member_count, inline=True)
+    em.add_field(name="New members on the bot", value=len(bot.users), inline=True)
+    em.set_thumbnail(url=guild.icon_url)
+    em.timestamp = datetime.datetime.utcnow()
+    await bot.get_guild(489498283194974210).get_channel(520218875493744660).send(embed=em)
+    
     general = find(lambda x: x.name == 'general',  guild.text_channels)
     if general and general.permissions_for(guild.me).send_messages:
         await general.send('**Thanks for added me! <a:ablobdancewhite:464794007755685898>\nMy prefix is `,` Use `,help` for list commands!\nSo if you found a bug/glitch command(s) or have a question about this bot, use `,support` for join our support server! Enjoy!** :hugging:')
+   
+
 @bot.event
 async def on_guild_remove(guild):
     print (f"-1 {guild.name}| ID {guild.id}")
-	
+    em = discord.Embed(title=f"-1 server (Total: {len(bot.guilds)})", color=0xe67e22)
+    em.add_field(name="Name Server", value=guild.name, inline=True)
+    em.add_field(name="ID", value=guild.id, inline=True)
+    em.add_field(name="Owner Server", value=guild.owner, inline=True)
+    em.add_field(name="Members", value=guild.member_count, inline=True)
+    em.add_field(name="New members on the bot", value=len(bot.users), inline=True)
+    em.set_thumbnail(url=guild.icon_url)
+    em.timestamp = datetime.datetime.utcnow()
+    await bot.get_guild(489498283194974210).get_channel(520218875493744660).send(embed=em)
+    
+
 @bot.event
 async def on_ready():
  print('Logged in as')
