@@ -53,6 +53,27 @@ async def on_guild_remove(guild):
     em.timestamp = datetime.datetime.utcnow()
     await bot.get_guild(489498283194974210).get_channel(520218875493744660).send(embed=em)
     
+@bot.listen()
+async def on_member_remove(member):
+    if member.guild.id == 464783042310045707:
+        em = discord.Embed(color=discord.Colour.red())
+        em.add_field(name='Goodbye!:', value=f"<a:Leave:503203313076928518> {member.mention}", inline=False)
+        em.add_field(name='Info:', value='Ne-a parasit... Speram sa revii, esti mereu bine venit :sob:', inline=False)
+        em.set_thumbnail(url=member.avatar_url)
+        await bot.get_guild(464783042310045707).get_channel(464783042310045709).send(embed=em)
+    if member.guild.id != 464783042310045707:
+        return
+
+@bot.listen()
+async def on_member_join(member):
+    if member.guild.id == 464783042310045707:        
+        em = discord.Embed(color=discord.Colour.green())
+        em.add_field(name='Welcome:', value=f"<a:Join:503203359097094154> {member.mention}", inline=False)
+        em.add_field(name='Info:', value='Nu uita sa citesti <#464789280368230400>, citeste <#466924639797641216> pentru mai multe informatii. Daca aveti o problema la server-ul nostru, contacti un membru staff! ENJOY', inline=False)
+        em.set_thumbnail(url=member.avatar_url)
+        await bot.get_channel(464783042310045709).send(embed=em)
+    if member.guild.id != 464783042310045707:
+        return
 
 @bot.event
 async def on_ready():
