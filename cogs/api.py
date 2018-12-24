@@ -77,7 +77,7 @@ class API():
 				embed.timestamp = datetime.datetime.utcnow()
 				await ctx.send(embed=embed)
 				
-	@commands.command()
+	@commands.command(aliases=['pika'])
 	@commands.cooldown(1, 5, commands.BucketType.user)
 	async def pikachu(self, ctx):
 		async with aiohttp.ClientSession() as cs:
