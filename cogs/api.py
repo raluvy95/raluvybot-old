@@ -71,7 +71,7 @@ class API():
 			async with cs.get("https://api-to.get-a.life/meme") as r:
 				res = await r.json()
 				embed = discord.Embed(color=discord.Colour.red())
-				embed.title = f'{res['text']}'
+				embed.title = (res['text'])
 				embed.set_image(url=res['url'])
 				embed.set_footer(text=f"{self.bot.user.name}")
 				embed.timestamp = datetime.datetime.utcnow()
