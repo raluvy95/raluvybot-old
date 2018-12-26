@@ -96,7 +96,7 @@ class API():
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get("https://api-to.get-a.life/catfact") as r:
 				res = await r.json()
-				await ctx.send(f":cat: Cat Facts\n**{res['fact']}**")
+				await ctx.send(f":cat: **Did you know?**\n{res['fact']}")
 					       
 	@commands.command(aliases=['dogfact'])
 	@commands.cooldown(1, 5, commands.BucketType.user)
@@ -104,7 +104,7 @@ class API():
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get("https://api-to.get-a.life/dogfact") as r:
 				res = await r.json()
-				await ctx.send(f":dog: Dog Facts\n**{res['fact']}**")
+			        await ctx.send(f":dog: **Did you know?**\n{res['fact']}")
 
 
 
