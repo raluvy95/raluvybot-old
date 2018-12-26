@@ -96,7 +96,6 @@ class API():
 		async with aiohttp.ClientSession() as cs:
 			async with cs.get("https://api-to.get-a.life/catfact") as r:
 				res = await r.json()
-				a = (res['fact'])
 				await ctx.send(f":cat: **Did you know?**\n{res['fact']}")
 					       
 	@commands.command(aliases=['dogfact'])
