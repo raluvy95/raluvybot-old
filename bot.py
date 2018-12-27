@@ -516,7 +516,8 @@ async def stats(ctx):
     embed.add_field(name="<:RaluvyUsers:489805123191701504> Total Users", value=len(bot.users), inline=True)
     embed.add_field(name="<:RaluvyServers:489805145757188097> Total Servers", value=len(bot.guilds), inline=True)
     embed.add_field(name=":crown: Owner Bot", value=f'<@390540063609454593>', inline=True)
-    embed.add_field(name="Uptime", value=text)
+    embed.add_field(name="Uptime", value=text, inline=True)
+    embed.add_field(name="Commands", value=len(ctx.bot.commands), inline=True)
     embed.add_field(name='Created at', value=ctx.me.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
     embed.add_field(name="Library", value="<:RaluvyPython:489805100420694016> discord.py", inline=True)
     embed.add_field(name="Discord.py API Version", value=discord.__version__, inline=True)
@@ -690,7 +691,7 @@ async def support(ctx):
 @bot.command(aliases=['h'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
-    embed = discord.Embed(title="HELP", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
+    embed = discord.Embed(title=f"All commands {len(ctx.bot.commands)}", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
