@@ -236,7 +236,7 @@ async def say(ctx, *, message):
 @bot.command(aliases=['howgay'])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def gay(ctx, member: discord.Member=None):
-     a = (random.choice(['1', '0', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55', '60', '65', '69', '70', '75', '80', '85', '90', '95', '99', '99,9', '100', '101']))
+     a = random.randint(0, 101)
      if member is None:
             member = (ctx.author)
      embed = discord.Embed(color=0xe67e22)
