@@ -85,7 +85,15 @@ async def on_ready():
 @bot.listen()
 async def on_command_error(ctx, error):
     print(f'\'{ctx.author}\' used command \'{ctx.command}\' on \'{ctx.guild.name} and got this error: \n{error}')
-    await bot.get_guild(489498283194974210).get_channel(530107395247177740).send(f'\'{ctx.author}\' used command \'{ctx.command}\' on \'{ctx.guild.name} and got this error: \n**{error}**')
+    em = discord.Embed(title=f"Error!", color=discord.Color.red())
+    em.add_field(name="Command name", value=ctx.command, inline=False)
+    em.add_field(name="User", value=ctx.author, inline=True)
+    em.add_field(name="User ID", value=ctx.author.id, inline=True)
+    em.add_field(name="Server name", value=ctx.guild.name, inline=True)
+    em.add_field(name="Server ID", value=ctx.guild.id, inline=True)
+    em.add_field(name="Error:", value=error, inline=False)
+    em.timestamp = datetime.datetime.utcnow()
+    await bot.get_guild(489498283194974210).get_channel(530107395247177740).send(embed=em)
     if isinstance(error, commands.CommandOnCooldown):
         return await ctx.send(f':no_entry:  | This command is on cooldown... **[{int(error.retry_after)} seconds]**', delete_after=5)
     if isinstance(error, commands.NotOwner):
