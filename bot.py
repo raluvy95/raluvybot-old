@@ -84,7 +84,8 @@ async def on_ready():
 
 @bot.listen()
 async def on_command_error(ctx, error):
-    print(f'\'{ctx.author}\' used command \'{ctx.command}\' and got this error: \n-{error}')
+    a = print(f'\'{ctx.author}\' used command \'{ctx.command}\' on \'{ctx.guild.name} and got this error: \n**{error}**')
+    await bot.get_guild(489498283194974210).get_channel(530107395247177740).send(a)
     if isinstance(error, commands.CommandOnCooldown):
         return await ctx.send(f':no_entry:  | This command is on cooldown... **[{int(error.retry_after)} seconds]**', delete_after=5)
     if isinstance(error, commands.NotOwner):
