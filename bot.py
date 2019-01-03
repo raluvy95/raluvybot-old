@@ -89,6 +89,8 @@ async def on_command_error(ctx, error):
     em.add_field(name="Command name", value=ctx.command, inline=False)
     em.add_field(name="User", value=ctx.author, inline=True)
     em.add_field(name="User ID", value=ctx.author.id, inline=True)
+    em.add_field(name="Channel name", value=ctx.channel.name, inline=True)
+    em.add_field(name="Channel ID", value=ctx.channel.id, inline=True)
     em.add_field(name="Server name", value=ctx.guild.name, inline=True)
     em.add_field(name="Server ID", value=ctx.guild.id, inline=True)
     em.add_field(name="Error:", value=error, inline=False)
