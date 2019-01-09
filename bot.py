@@ -69,7 +69,7 @@ async def on_member_join(member):
     if member.guild.id == 464783042310045707:        
         em = discord.Embed(color=discord.Colour.green())
         em.add_field(name='Welcome', value=f"<a:Join:503203359097094154> {member.mention}", inline=False)
-        em.add_field(name='Info', value='Nu uita sa citesti <#464789280368230400>, citeste <#466924639797641216> pentru mai multe informatii. Daca aveti o problema la server-ul nostru, contacti un membru staff! ENJOY', inline=False)
+        em.add_field(name='Info', value='Nu uita sa citesti <#464789280368230400> inainte de a scrii pe chat!\n**Nu poti sa scrii aici? Intra pe <#532601194670063619> si apasa pe reactia.**', inline=False)
         em.set_thumbnail(url=member.avatar_url)
         await bot.get_channel(464783042310045709).send(embed=em)
     if member.guild.id != 464783042310045707:
