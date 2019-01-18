@@ -238,6 +238,15 @@ async def xd(ctx, message=None):
     a=message
     await ctx.send(f'```{a}           {a}    {a} {a}\n  {a}       {a}      {a}    {a}\n    {a}   {a}        {a}     {a}\n       {a}            {a}     {a}\n    {a}   {a}        {a}     {a}\n  {a}       {a}      {a}    {a}\n{a}           {a}    {a} {a}```')
 
+@bot.command()
+async def logo(ctx, *, text):
+    if len(text)>18:
+         return await ctx.send("**Your text is too long!** Try again.")
+    a = random.choice(['scoobydoo','cnn', 'starWars', 'yahoo', '43things', 'batman', 'SpiderMan', 'harrypotter', 'army', 'blazed', '101puppies'])
+    em = discord.Embed(colour=discord.Colour.blue(), title='Your custom logo:')
+    brand = text.replace(" ","%20")
+    em.set_image(url=f'http://createfunnylogo.com/logo/{a}/{brand}.jpg')
+    await ctx.send(embed=em)
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -703,7 +712,7 @@ async def support(ctx):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
     embed = discord.Embed(title=f"All commands (Total: {len(ctx.bot.commands)})", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`  `logo`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
