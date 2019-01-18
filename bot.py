@@ -369,8 +369,8 @@ async def wumpus(ctx, *, message=None):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def blobdance(ctx, *, message=None):
     if message is None:
-        return await ctx.send('<a:ablobyay:464794064579985409>')
-    await ctx.send('<a:ablobyay:464794064579985409>'.join(message))
+        return await ctx.send('<a:blobdance:535801229050118164>')
+    await ctx.send('<a:blobdance:535801229050118164>'.join(message))
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
