@@ -654,6 +654,10 @@ async def avatar(ctx, member: discord.Member=None):
 async def membercount(ctx):
     c = 0
     a = 0
+    online = 0
+    idle = 0
+    dnd = 0
+    offline = 0
     n = ctx.guild.member_count
     for i in ctx.guild.members:
      if i.bot is True:
@@ -661,10 +665,25 @@ async def membercount(ctx):
     for i in ctx.guild.members:
      if i.bot is False:
       a+=1
+    for i in ctx.guild.members:
+      if i.status.name == 'online':
+          online += 1
+      if i.status.name == 'idle':
+          idle += 1
+      if i.status.name == 'dnd':
+          dnd += 1
+      if i.status.name == 'offline':
+          offline += 1
+      g = online + idle + dnd
     em = discord.Embed(color=discord.Colour.orange())
     em.add_field(name='Members', value=f'{n}', inline=True)
     em.add_field(name='Bots', value=f'{c}', inline=True)
     em.add_field(name='People', value=f'{a}', inline=True)
+    em.add_field(name='Members Online', value=f'{g}', inline=True)
+    em.add_field(name='<:offline:536240817552228385> Offline', value=f'{offline}', inline=True)
+    em.add_field(name='<:dnd:536240817531125760> DND', value=f'{dnd}', inline=True)
+    em.add_field(name='<:idle:536240817522868224> Idle', value=f'{idle}', inline=True)
+    em.add_field(name='<:online:536240817602560010> Online', value=f'{online}', inline=True)
     em.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=em)
 
