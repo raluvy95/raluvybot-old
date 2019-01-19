@@ -675,15 +675,12 @@ async def membercount(ctx):
       if i.status.name == 'offline':
           offline += 1
       g = online + idle + dnd
+    s = f"{g}\n<:online:536240817602560010> Online - **{online}**\n<:dnd:536240817531125760> DND - **{dnd}**\n<:idle:536240817522868224> Idle - **{idle}\n<:offline:536240817552228385> Offline - **{offline}**"
     em = discord.Embed(color=discord.Colour.orange())
     em.add_field(name='Members', value=f'{n}', inline=True)
     em.add_field(name='Bots', value=f'{c}', inline=True)
     em.add_field(name='People', value=f'{a}', inline=True)
-    em.add_field(name='Members Online', value=f'{g}', inline=True)
-    em.add_field(name='<:offline:536240817552228385> Offline', value=f'{offline}', inline=False)
-    em.add_field(name='<:dnd:536240817531125760> DND', value=f'{dnd}', inline=False)
-    em.add_field(name='<:idle:536240817522868224> Idle', value=f'{idle}', inline=False)
-    em.add_field(name='<:online:536240817602560010> Online', value=f'{online}', inline=False)
+    em.add_field(name='Members Online', value=f'{s}', inline=True)
     em.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=em)
 
