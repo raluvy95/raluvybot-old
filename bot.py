@@ -675,7 +675,7 @@ async def membercount(ctx):
       if i.status.name == 'offline':
           offline += 1
       g = online + idle + dnd
-    s = f"{g}\n<:online:536240817602560010> Online - **{online}**\n<:dnd:536240817531125760> DND - **{dnd}**\n<:idle:536240817522868224> Idle - **{idle}\n<:offline:536240817552228385> Offline - **{offline}**"
+    s = f"{g}\n<:online:536240817602560010> Online - **{online}**\n<:dnd:536240817531125760> DND - **{dnd}**\n<:idle:536240817522868224> Idle - **{idle}**\n<:offline:536240817552228385> Offline - **{offline}**"
     em = discord.Embed(color=discord.Colour.orange())
     em.add_field(name='Members', value=f'{n}', inline=True)
     em.add_field(name='Bots', value=f'{c}', inline=True)
