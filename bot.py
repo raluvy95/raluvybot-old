@@ -702,20 +702,33 @@ async def membercount(ctx):
     await ctx.send(embed=em)
 
 	
-@bot.command(aliases= ["whois", "uinfo", "playerinfo", "user info"])
+@bot.command(aliases= ["whois", "uinfo", "playerinfo", "user-info"])
 async def userinfo(ctx, member: discord.Member=None):
     if member is None:
 	    member = (ctx.author)
+    if member.bot is True:
+         a = "Yes, he's a bot! :robot:"
+    if member.bot is False:
+         a = "No, he's not a bot! :grinning:"
+    if member.status.name == 'online':
+          b = "<:online:536240817602560010> Online"
+    if member.status.name == 'idle':
+          b = "<:idle:536240817522868224> Idle"
+    if member.status.name == 'dnd':
+          b = "<:dnd:536240817531125760> DND"
+    if member.status.name == 'offline':
+          b = "<:offline:536240817552228385> Offline"
     embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
     embed.set_author(name="Who is?")
-    embed.add_field(name=":bust_in_silhouette: Name", value=member.name)
-    embed.add_field(name="Is this a bot?", value=member.bot)
-    embed.add_field(name=":atm: Tag", value=member.discriminator)
-    embed.add_field(name=":eject: Top Role", value=member.top_role)
-    embed.add_field(name=":pencil2: Nick", value=member.nick)
-    embed.add_field(name=":inbox_tray: Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
-    embed.add_field(name=":clock1: Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
-    embed.add_field(name=":beginner:  Roles", value=', '.join(g.name for g in member.roles))
+    embed.add_field(name="Name", value=member.name)
+    embed.add_field(name="Is this a bot?", value=a)
+    embed.add_field(name="Status", value=b)
+    embed.add_field(name="Tag", value=member.discriminator)
+    embed.add_field(name="Top Role", value=member.top_role)
+    embed.add_field(name="Nick", value=member.nick)
+    embed.add_field(name="Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name="Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+    embed.add_field(name="Roles", value=', '.join(g.name for g in member.roles))
     embed.set_thumbnail(url=member.avatar_url)
     embed.set_footer(text=f'ID: {member.id}')
     embed.timestamp = datetime.datetime.utcnow()
