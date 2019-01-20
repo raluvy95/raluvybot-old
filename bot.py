@@ -703,13 +703,14 @@ async def membercount(ctx):
 
 	
 @bot.command(aliases= ["whois", "uinfo", "playerinfo", "user-info"])
+@commands.cooldown(1, 3, commands.BucketType.user)
 async def userinfo(ctx, member: discord.Member=None):
     if member is None:
 	    member = (ctx.author)
     if member.bot is True:
-         a = "Yes, he's a bot! :robot:"
+          a = "Yes, he's a bot! :robot:"
     if member.bot is False:
-         a = "No, he's not a bot! :grinning:"
+          a = "No, he's not a bot! :grinning:"
     if member.status.name == 'online':
           b = "<:online:536240817602560010> Online"
     if member.status.name == 'idle':
@@ -718,11 +719,16 @@ async def userinfo(ctx, member: discord.Member=None):
           b = "<:dnd:536240817531125760> DND"
     if member.status.name == 'offline':
           b = "<:offline:536240817552228385> Offline"
+    if member.activity is None:
+          c = 'This user is not playing yet'
+    if member.activity is not None:
+          c = ctx.author.activity
     embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
     embed.set_author(name="Who is?")
     embed.add_field(name="Name", value=member.name)
     embed.add_field(name="Is this a bot?", value=a)
     embed.add_field(name="Status", value=b)
+    embed.add_field(name="Playing", value=c)
     embed.add_field(name="Tag", value=member.discriminator)
     embed.add_field(name="Top Role", value=member.top_role)
     embed.add_field(name="Nick", value=member.nick)
@@ -734,6 +740,8 @@ async def userinfo(ctx, member: discord.Member=None):
     embed.timestamp = datetime.datetime.utcnow()
 
     await ctx.send(embed=embed)
+
+
 
 
 
