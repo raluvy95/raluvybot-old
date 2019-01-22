@@ -765,6 +765,7 @@ async def support(ctx):
 @bot.command(aliases=['h'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def help(ctx):
+    await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
     embed = discord.Embed(title=f"All commands (Total: {len(ctx.bot.commands)})", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`  `logo`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
@@ -774,7 +775,7 @@ async def help(ctx):
     embed.add_field(name=":pushpin: Utility", value="`ping`  `vote`  `randomnumber`  `flipcoin`  `avatar`  `support`  `emojiavatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
-    await ctx.send(embed=embed)
+    await ctx.author.send(embed=embed)
 
 async def presence():
     await bot.wait_until_ready()
