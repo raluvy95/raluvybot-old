@@ -632,7 +632,7 @@ async def remove(ctx, role: discord.Role, member: discord.Member):
 @commands.has_permissions(manage_messages=True)
 async def purge(ctx, number: int):
     if number>100:
-        return await ctx.send(":x: **Too many numbers! Try again!**")
+        return await ctx.send("<:RaluvyError:489805076118896690> **Too many numbers! Try again!**")
     await ctx.message.delete()
     await ctx.channel.purge(limit=number)
 	
