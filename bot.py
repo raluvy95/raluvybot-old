@@ -631,9 +631,10 @@ async def remove(ctx, role: discord.Role, member: discord.Member):
 @commands.cooldown(1, 5, commands.BucketType.user)
 @commands.has_permissions(manage_messages=True)
 async def purge(ctx, number: int):
+    if len(number) < 200:
+        return await ctx.send(":x: **Too many numbers! Try again!**")
     await ctx.message.delete()
     await ctx.message.channel.purge(limit=number)
-    await ctx.send(f'<:RaluvySucces:489805130963615754> | **{int(number)} message deleted**', delete_after=5)
 	
 	
 
