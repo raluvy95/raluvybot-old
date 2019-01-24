@@ -470,8 +470,6 @@ async def serverinfo(ctx):
           idle += 1
       if i.status.name == 'dnd':
           dnd += 1
-      if i.status.name == 'offline':
-          offline += 1
       g = online + idle + dnd
     em = discord.Embed(color=discord.Colour.orange())
     em.add_field(name='Name', value=f'{ctx.author.guild.name}', inline=True)
