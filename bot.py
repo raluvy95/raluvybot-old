@@ -189,7 +189,7 @@ async def slap(ctx, member: discord.Member=None):
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
 
-@bot.command()
+@bot.command(aliases=['flipcoins'])
 async def flipcoin(ctx):
     a = (ctx.author.mention)
     msg = await ctx.send('Flipping...')
@@ -447,26 +447,15 @@ async def jesussay(ctx, *, message=None):
     embed.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=embed)
 
-@bot.command()
-async def verify(ctx):
-  if ctx.author.guild.id == 464783042310045707:
-    await ctx.message.delete()
-    role = discord.utils.get(ctx.guild.roles, id=464786254790393866)
-    user = ctx.message.author
-    await user.add_roles(role)
-    role = discord.utils.get(ctx.guild.roles, id=498186204353921035)
-    role2 = discord.utils.get(ctx.guild.roles, id=505303297935015936)
-    user = ctx.message.author
-    await user.remove_roles(role, role2)
-  if ctx.author.guild.id != 464783042310045707:
-        return
-
-
 @bot.command(aliases= ["sinfo", "server info", "server_info"])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def serverinfo(ctx):
     c = 0
     a = 0
+    g = 0
+    online = 0
+    idle = 0
+    dnd = 0
     n = ctx.guild.member_count
     for i in ctx.guild.members:
      if i.bot is True:
@@ -474,16 +463,30 @@ async def serverinfo(ctx):
     for i in ctx.guild.members:
      if i.bot is False:
       a+=1
+    for i in ctx.guild.members:
+      if i.status.name == 'online':
+          online += 1
+      if i.status.name == 'idle':
+          idle += 1
+      if i.status.name == 'dnd':
+          dnd += 1
+      if i.status.name == 'offline':
+          offline += 1
+      g = online + idle + dnd
     em = discord.Embed(color=discord.Colour.orange())
-    em.add_field(name=':pencil2: Name', value=f'{ctx.author.guild.name}', inline=True)
-    em.add_field(name=':crown: Owner', value=f'{ctx.author.guild.owner.mention} [{ctx.author.guild.owner.id}]', inline=True)
-    em.add_field(name=':mountain_snow: Icon', value='Type `,servericon`', inline=True)
-    em.add_field(name=':beginner: Roles', value=f'{len(ctx.guild.roles)} `,sroles`', inline=True)
-    em.add_field(name=':busts_in_silhouette: Members', value=f'{n}', inline=True)
-    em.add_field(name=':robot: Bots', value=f'{c}', inline=True)
-    em.add_field(name=':bust_in_silhouette: People', value=f'{a}', inline=True)
-    em.add_field(name=':clock1: Created at', value=ctx.guild.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
-    em.add_field(name=':globe_with_meridians: Region', value=ctx.guild.region, inline=True)
+    em.add_field(name='Name', value=f'{ctx.author.guild.name}', inline=True)
+    em.add_field(name='Owner', value=f'{ctx.author.guild.owner.mention} [{ctx.author.guild.owner.id}]', inline=True)
+    em.add_field(name='Icon', value='Type `,servericon`', inline=True)
+    em.add_field(name='Verification level', value=ctx.guild.verification_level, inline=True)
+    em.add_field(name='Roles', value=f'{len(ctx.guild.roles)} `,sroles`', inline=True)
+    em.add_field(name='Text Channels', value=f'{len(ctx.guild.channels)}', inline=True)
+    em.add_field(name='Voice', value=f'{len(ctx.guild.voice_channels)}', inline=True)
+    em.add_field(name='Members', value=f'{n}', inline=True)
+    em.add_field(name='Bots', value=f'{c}', inline=True)
+    em.add_field(name='People', value=f'{a}', inline=True)
+    em.add_field(name='Online', value=f'{g}', inline=True)
+    em.add_field(name='Created at', value=ctx.guild.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
+    em.add_field(name='Region', value=ctx.guild.region, inline=True)
     em.set_thumbnail(url=ctx.guild.icon_url)
     em.set_footer(text=f'ID: {ctx.guild.id}')
     em.timestamp = datetime.datetime.utcnow()
@@ -519,12 +522,6 @@ async def kill(ctx, member: discord.Member=None):
     if member is not None:
         await ctx.send(random.choice([f':gun: | **{ctx.author.mention} wanted to kill {member.mention} just as he stumbled and struck his head with a stone**', f':gun: | **{member.mention} died from a murderer**', f':gun: | **{member.mention} gave too much rage to Clash Royale until he fainted and died**', f':gun: | **{member.mention} was pushed by {ctx.author.mention} from the 5th floor and died**', f':gun: **{member.mention}, The pregnancy of the table just fell asleep and caught fire**', f':gun: | **{member.mention} was shot by {ctx.author.mention}**', f':gun: **After a hard attempt to kill him {member.mention} , {ctx.author.mention} was arrested**']))
 
-
-@bot.command()
-@commands.cooldown(1, 5, commands.BucketType.user)
-async def cplm(ctx):
-    await ctx.send("<:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372><:BlobCPLM:465441659140964372>")
-
 @bot.command(aliases=['about', 'info', 'botinfo'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def stats(ctx):
@@ -547,6 +544,13 @@ async def stats(ctx):
 	
     await ctx.send(embed=embed)
 
+@bot.command()
+@commands.cooldown(1, 2, commands.BucketType.user)
+async def uptime(ctx):
+    current_time = time.time()
+    difference = int(round(current_time - start_time))
+    text = str(datetime.timedelta(seconds=difference))
+    await ctx.send(text)
 
 
 # Moderation #
