@@ -78,27 +78,28 @@ class API():
 				embed.timestamp = datetime.datetime.utcnow()
 				await ctx.send(embed=embed)
 				
-	@commands.command(aliases=['pokedex', 'poked'])
-	@commmands.cooldown(1, 3, commands.BucketType.user)
-	async def pokemon(self, ctx, name=None):
-		if name is None:
-			return await ctx.send("**Emply? Try again with name of pokemon**")
-		async with aiohttp.CilentSession() as cs:
-			async with cs.get(f'https://some-random-api.ml/pokedex?pokemon={name}') as r:
-				res = await r.json()
-				try:
-					embed = discord.Embed(title=f"ID: {res['id']} | {res['name']}", description=res["description"] ,color=0x000000)
+        @commands.command(aliases=['pokedex', 'poked'])
+        @commmands.cooldown(1, 3, commands.BucketType.user)
+        async def pokemon(self, ctx, name=None):
+                if name is None:
+                        return await ctx.send("**Emply? Try again with name of pokemon**")
+                async with aiohttp.CilentSession() as cs:
+                        async with cs.get(f'https://some-random-api.ml/pokedex?pokemon={name}') as r:
+                                res = await r.json()
+                                try:
+                                        embed = discord.Embed(title=f"ID: {res['id']} | {res['name']}", description=res["description"] ,color=0x000000)
                                         embed.set_thumbnail(url=res['sprites']['animated'])
                                         embed.set_author(name="Pokedex", icon_url='https://vignette.wikia.nocookie.net/freebeerz/images/8/86/Pokeball_Icon.png/revision/latest?cb=20120430172421')
-					embed.add_field(name="Species", value=res['species'], inline=True)
-					embed.add_field(name="Height", value=res['height'], inline=True)
-					embed.add_field(name="Weight", value=res['veight'], inline=True)
-					embed.add_field(name="Base exprerience", value=res['base_exprerience'], inline=True)
-					embed.add_field(name="Types", value=res['types'], inline=True)
-					embed.add_field(name="Gender ratio", value=f"Male: {res['gender_ratio']['male']} Female: {res['gender_ratio']['female']}", inline=True)
-					await ctx.send(embed=embed)
-				except KeyError as key:
-					await ctx.send(f"Ops... {name} is not found in pokedex!**")
+                                        embed.add_field(name="Species", value=res['species'], inline=True)
+                                        embed.add_field(name="Height", value=res['height'], inline=True)
+                                        embed.add_field(name="Weight", value=res['veight'], inline=True)
+                                        embed.add_field(name="Base exprerience", value=res['base_exprerience'], inline=True)
+                                        embed.add_field(name="Types", value=res['types'], inline=True)
+                                        embed.add_field(name="Gender ratio", value=f"Male: {res['gender_ratio']['male']} Female: {res['gender_ratio']['female']}", inline=True)
+                                        await ctx.send(embed=embed)
+                                except KeyError as key:
+                                        await ctx.send(f"Ops... {name} is not found in pokedex!**")
+
 							
 	@commands.command(aliases=['pika'])
 	@commands.cooldown(1, 5, commands.BucketType.user)
