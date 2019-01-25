@@ -88,7 +88,7 @@ class API():
 				res = await r.json()
 				try:
 					embed = discord.Embed(title=f"ID: {res['id']} | {res['name']}", description=res["description"] ,color=0x000000)
-                                        embed.set_thumbnail(url=res["sprites"]["animated"])
+                                        embed.set_thumbnail(url=res['sprites']['animated'])
                                         embed.set_author(name="Pokedex", icon_url='https://vignette.wikia.nocookie.net/freebeerz/images/8/86/Pokeball_Icon.png/revision/latest?cb=20120430172421')
 					embed.add_field(name="Species", value=res['species'], inline=True)
 					embed.add_field(name="Height", value=res['height'], inline=True)
