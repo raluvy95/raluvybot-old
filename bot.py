@@ -550,6 +550,27 @@ async def uptime(ctx):
     text = str(datetime.timedelta(seconds=difference))
     await ctx.send(text)
 
+@bot.command(aliases=['role-info'])
+@commands.cooldown(1, 3, commands.BucketType.user)
+async def roleinfo(ctx, role: discord.Role=None):
+     if role is None:
+          return await ctx.send(f"**Ops... Try again with role mention or role name!**")
+     if role.mentionable is True:
+          mention = "Yes"
+     else:
+          mention = "No"
+     if role.hoist is True:
+          hoist = "Yes"
+     else:
+          hoist = "No"
+     embed = discord.Embed(title=role.name, color=role.color)
+     embed.add_field(name="Created at", value=role.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"), inline=True)
+     embed.add_field(name="Mentionable", value=mention, inline=True)
+     embed.add_field(name="ID", value=role.id, inline=True)
+     embed.add_field(name="Color", value=role.color, inline=True)
+     embed.add_field(name="Members in this role", value=len(role.members), inline=True)
+     embed.add_field(name="Displayed separately", value=hoist)
+     await ctx.send(embed=embed)
 
 # Moderation #
 
@@ -788,7 +809,7 @@ async def help(ctx):
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
-    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
+    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `uptime`  `vote`  `randomnumber`  `flipcoin`  `avatar`  `support`  `emojiavatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
