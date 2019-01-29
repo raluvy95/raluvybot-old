@@ -503,9 +503,12 @@ async def servericon(ctx):
 @bot.command(aliases=['sroles'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def serverroles(ctx):
-    em = discord.Embed(color=discord.Colour.blue())
-    em.add_field(name=f'Server Roles [{len(ctx.guild.roles)}]', value=', '.join(g.name for g in ctx.guild.roles))
-    await ctx.send(embed=em)
+    try:
+         em = discord.Embed(color=discord.Colour.blue())
+         em.add_field(name=f'Server Roles [{len(ctx.guild.roles)}]', value=', '.join(g.name for g in ctx.guild.roles))
+         await ctx.send(embed=em)
+    except discord.HTTPException as owo:
+         await ctx.send("**This server has too many roles!** Sorry! :(")
 
 
 @bot.command()
