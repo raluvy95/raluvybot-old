@@ -280,7 +280,7 @@ async def emojiinfo(ctx, emoji: discord.Emoji):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def doge(ctx, *message):
     if message is None:
-	    return await ctx.send("**Please put a message to run this command!**")
+            return await ctx.send("**Please put a message to run this command!**")
     if message is not None:
             i = ('http://dogr.io/' + '/'.join(message) + '/.png?split=false')
             em = discord.Embed(title="Wow, much doge, such amazing!", color=0xe67e22)
@@ -292,7 +292,7 @@ async def doge(ctx, *message):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def achievement(ctx, *message):
     if message is None:
-	    return await ctx.send("**Please put a message to run this command!**")
+            return await ctx.send("**Please put a message to run this command!**")
     if message is not None:
             i = ('https://www.minecraftskinstealer.com/achievement/a.php?i=1&h=Achievement+get%21&t=' + '+'.join(message))
             em = discord.Embed(title="", color=0xe67e22)
@@ -342,8 +342,8 @@ async def clap(ctx, *, message=None):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def dice(ctx):
     a = (random.choice(['1', '2', '3', '4', '5', '6']))
-    await ctx.send(f":game_die: | **I rolled a `{a}`!**")	   
-		   
+    await ctx.send(f":game_die: | **I rolled a `{a}`!**")          
+                   
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def parrot(ctx, *, message=None):
@@ -357,7 +357,7 @@ async def owo(ctx, *, message=None):
     if message is None:
         return await ctx.send("**OwO! What's this?**")
     await ctx.send(f"""**OwO! {message}**""")
-			   
+                           
 @bot.command(aliases=['slot'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def slots(ctx):
@@ -405,7 +405,7 @@ async def choose(ctx, option1, option2):
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def emoji(ctx):
     await ctx.send(random.choice(bot.emojis))
-		   
+                   
 @bot.command(aliases=['emojiavatar', 'iconemoji', 'avataremoji'])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def emojiicon(ctx, emoji: discord.Emoji):
@@ -430,11 +430,11 @@ async def shrug(ctx):
 @bot.command(name='8ball')
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def lball(ctx, question = None):
-	if question is None:
-		return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please put a question!**')
-	if question is not None:
-		await ctx.send(random.choice(['● It is certain.', '● It is decidedly so.', '● Without a doubt.', '● Yes - definitely.', '● You may rely on it', '● As I see it, yes.', '● Most likely.', '● Outlook good.', '● Yes.', '● Signs point to yes.', '● Reply hazy, try again', '● Ask again later.', '● Better not tell you now.', '● Cannot predict now.', '● Concentrate and ask again.', '● Don`t count on it.', '● My reply is no.', '● My sources say no', '● Outlook not so good.', '● Very doubtful.' ]))
-		
+        if question is None:
+                return await ctx.send('<:RaluvyQuestion:489805105764499467> | **Please put a question!**')
+        if question is not None:
+                await ctx.send(random.choice(['● It is certain.', '● It is decidedly so.', '● Without a doubt.', '● Yes - definitely.', '● You may rely on it', '● As I see it, yes.', '● Most likely.', '● Outlook good.', '● Yes.', '● Signs point to yes.', '● Reply hazy, try again', '● Ask again later.', '● Better not tell you now.', '● Cannot predict now.', '● Concentrate and ask again.', '● Don`t count on it.', '● My reply is no.', '● My sources say no', '● Outlook not so good.', '● Very doubtful.' ]))
+                
 
 @bot.command(aliases=['jesus'])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -529,7 +529,7 @@ async def stats(ctx):
     current_time = time.time()
     difference = int(round(current_time - start_time))
     text = str(datetime.timedelta(seconds=difference))
-		   
+                   
     embed = discord.Embed(title="Stats Bot", color=0xe67e22)
     embed.add_field(name="<:RaluvyUsers:489805123191701504> Total Users", value=len(bot.users), inline=True)
     embed.add_field(name="<:RaluvyServers:489805145757188097> Total Servers", value=len(bot.guilds), inline=True)
@@ -542,7 +542,7 @@ async def stats(ctx):
     embed.set_thumbnail(url=ctx.me.avatar_url)
     embed.timestamp = datetime.datetime.utcnow()
     embed.set_footer(text='Thank you for using Raluvy <3')
-	
+        
     await ctx.send(embed=embed)
 
 @bot.command()
@@ -575,7 +575,7 @@ async def roleinfo(ctx, role: discord.Role=None):
      embed.add_field(name="Displayed separately", value=hoist)
      await ctx.send(embed=embed)
 
-# Moderation #
+ Moderation #
 
 @bot.command()
 @commands.has_permissions(kick_members=True)
@@ -621,7 +621,7 @@ async def nick(ctx, member: discord.Member=None, *, uwu):
      try:
           if uwu == "remove":
               await member.edit(nick=member.name)
-	      return await ctx.message.add_reaction('\U00002705')
+              return await ctx.message.add_reaction('\U00002705')
           if member is not None and uwu is not None:
               await member.edit(nick=f'{uwu}')
               return await ctx.send("Done! :white_check_mark: ")
@@ -649,8 +649,8 @@ async def ban(ctx, member: discord.Member = None, *, message=None):
          if member is not None and message is not None:
              await member.ban(reason=f'{message}  by {ctx.author}')
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
-	
-	
+        
+        
 @bot.group(aliases=['rank'])
 @commands.has_permissions(manage_roles=True)
 async def role(ctx):
@@ -677,12 +677,12 @@ async def purge(ctx, number: int):
         return await ctx.send("<:RaluvyError:489805076118896690> **Too many numbers! Try again!**")
     await ctx.message.delete()
     await ctx.channel.purge(limit=number)
-	
-	
+        
+        
 
-	
-# Utility #	
-	
+        
+ Utility #      
+        
 @bot.command(aliases=['av'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def avatar(ctx, member: discord.Member=None):
@@ -691,7 +691,7 @@ async def avatar(ctx, member: discord.Member=None):
     em = discord.Embed(description=f'{member.mention}\'s [avatar]({member.avatar_url})', color=discord.Colour.blurple())
     em.set_image(url=member.avatar_url)
     await ctx.send(embed=em)
-	
+        
 @bot.command()
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def membercount(ctx):
@@ -744,12 +744,12 @@ async def membercount(ctx):
     em.timestamp = datetime.datetime.utcnow()
     await ctx.send(embed=em)
 
-	
+        
 @bot.command(aliases= ["whois", "uinfo", "playerinfo", "user-info"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def userinfo(ctx, member: discord.Member=None):
     if member is None:
-	    member = (ctx.author)
+            member = (ctx.author)
     if member.bot is True:
           a = "Yes, he's a bot! :robot:"
     if member.bot is False:
@@ -789,15 +789,15 @@ async def userinfo(ctx, member: discord.Member=None):
 
 
 
-# More #
-	
+ More #
+        
 @bot.command(hidden=True, aliases=['set_playing', 'set playing'])
 async def setplaying(ctx, *, message = None):
     if message is None:
         return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please put message what's playing bot...**")
     await bot.change_presence(activity=discord.Game(name=f"{message} || ,help"))
-    await ctx.send("<:RaluvySucces:489805130963615754>", delete_after=2)		   
-		   
+    await ctx.send("<:RaluvySucces:489805130963615754>", delete_after=2)                   
+                   
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def support(ctx):
@@ -839,7 +839,7 @@ async def presence():
         await sleep(30)
         await bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name=f"{len(bot.guilds)} servers || ,help"))
         await sleep(30)
-	
+        
 
 bot.loop.create_task(presence())
 bot.run(os.getenv("TOKEN"))
