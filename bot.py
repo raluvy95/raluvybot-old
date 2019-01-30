@@ -620,7 +620,8 @@ async def softban(ctx, member: discord.Member = None, *, message = None):
 async def nick(ctx, member: discord.Member=None, *, uwu):
      try:
           if uwu == "remove":
-              return await member.edit(nick=member.name)
+              await member.edit(nick=member.name)
+	      return await ctx.message.add_reaction('\U00002705')
           if member is not None and uwu is not None:
               await member.edit(nick=f'{uwu}')
               return await ctx.send("Done! :white_check_mark: ")
