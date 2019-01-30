@@ -575,7 +575,7 @@ async def roleinfo(ctx, role: discord.Role=None):
      embed.add_field(name="Displayed separately", value=hoist)
      await ctx.send(embed=embed)
 
- Moderation #
+
 
 @bot.command()
 @commands.has_permissions(kick_members=True)
@@ -681,7 +681,7 @@ async def purge(ctx, number: int):
         
 
         
- Utility #      
+    
         
 @bot.command(aliases=['av'])
 @commands.cooldown(1, 5, commands.BucketType.user)
@@ -785,11 +785,6 @@ async def userinfo(ctx, member: discord.Member=None):
     await ctx.send(embed=embed)
 
 
-
-
-
-
- More #
         
 @bot.command(hidden=True, aliases=['set_playing', 'set playing'])
 async def setplaying(ctx, *, message = None):
