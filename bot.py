@@ -616,19 +616,20 @@ async def softban(ctx, member: discord.Member = None, *, message = None):
              await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked (softban)!**')
 
 @bot.command(aliases=['nickname'])
-@commands.has_permissions(change_nickname=True)
+@commands.has_permissions(manage_nicknames=True)
 async def nick(ctx, member: discord.Member=None, *, uwu):
      try:
-          
+          if uwu == "remove":
+              return await member.edit(nick=member.name)
           if member is not None and uwu is not None:
               await member.edit(nick=f'{uwu}')
-              await ctx.send("Done! :white_check_mark: ")
+              return await ctx.send("Done! :white_check_mark: ")
           if member is not None and uwu is None:
-              await ctx.send(":x: Please use `,nick <mention> <new nick>`")
+              return await ctx.send(":x: Please use `,nick <mention> <new nick> [remove]`")
           if member is None and uwu is None:
-              await ctx.send(":x: Please use `,nick <mention> <new nick>`")
+              return await ctx.send(":x: Please use `,nick <mention> <new nick> [remove]`")
      except discord.Forbidden as owo:
-          await ctx.send(f"**Ops... I can't change because:**\n`{owo}`")
+          return await ctx.send(f"**Ops... I can't change because:**\n`{owo}`")
 
 @bot.command()
 @commands.has_permissions(ban_members=True)
