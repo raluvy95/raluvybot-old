@@ -765,7 +765,7 @@ async def userinfo(ctx, member: discord.Member=None):
     if member.activity is None:
           c = 'This user is not playing yet'
     if member.activity is not None:
-          c = ctx.author.activity
+          c = ctx.author.activity.name
     embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
     embed.set_author(name="Who is?")
     embed.add_field(name="Name", value=member.name)
