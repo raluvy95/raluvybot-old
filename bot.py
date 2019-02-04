@@ -292,6 +292,7 @@ async def doge(ctx, *message):
             await ctx.send(embed=em)
 
 @bot.command(aliases=['cursed-images', 'cursedimage', 'cursedimages', 'cursed-image'])
+@commands.cooldown(1, 5, commands.BucketType.user)
 async def cursed(ctx):
      with open("data/cursed.json", "r") as f:
         res = json.load(f)
