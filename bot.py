@@ -13,6 +13,7 @@ from asyncio import sleep
 import logging
 import time
 import os
+import json
 
 start_time = time.time()
 
@@ -288,6 +289,16 @@ async def doge(ctx, *message):
             em.timestamp = datetime.datetime.utcnow()
             await ctx.send(embed=em)
 
+@bot.command(aliases=['cursed-images', 'cursedimage', 'cursedimages', 'cursed-image'])
+async def cursed(ctx):
+     with open("data/cursed.json", "r") as f:
+        res = json.load(f)
+        gay = random.choice(res['image'])
+     embed = discord.Embed(title="Random Cursed Images", color=discord.Color.green())
+     embed.set_image(url=gay)
+     embed.timestamp = datetime.datetime.utcnow()
+     await ctx.send(embed=embed)
+                   
 @bot.command(aliases=['mc', 'minecraft'])
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def achievement(ctx, *message):
