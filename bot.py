@@ -547,7 +547,7 @@ async def stats(ctx):
     embed = discord.Embed(title="Stats Bot", color=0xe67e22)
     embed.add_field(name="<:RaluvyUsers:489805123191701504> Total Users", value=len(bot.users), inline=True)
     embed.add_field(name="<:RaluvyServers:489805145757188097> Total Servers", value=len(bot.guilds), inline=True)
-    embed.add_field(name=":crown: Owner Bot", value=f"<@{res['owner']['id']}>", inline=True)
+    embed.add_field(name=":crown: Owner Bot", value=f"<@390540063609454593>", inline=True)
     embed.add_field(name="Uptime", value=text, inline=True)
     embed.add_field(name="Commands", value=len(ctx.bot.commands), inline=True)
     embed.add_field(name='Created at', value=ctx.me.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
