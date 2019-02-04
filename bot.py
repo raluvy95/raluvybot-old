@@ -16,8 +16,10 @@ import os
 import json
 
 start_time = time.time()
-
-bot = commands.Bot(command_prefix=',')
+with open("data/config.json", "r") as f:
+    kek = json.load(f)
+    
+bot = commands.Bot(command_prefix=kek['prefix'])
 logging.basicConfig(level='INFO')
 bot.remove_command('help')
 bot.load_extension("cogs.admin")
@@ -544,7 +546,7 @@ async def stats(ctx):
     embed = discord.Embed(title="Stats Bot", color=0xe67e22)
     embed.add_field(name="<:RaluvyUsers:489805123191701504> Total Users", value=len(bot.users), inline=True)
     embed.add_field(name="<:RaluvyServers:489805145757188097> Total Servers", value=len(bot.guilds), inline=True)
-    embed.add_field(name=":crown: Owner Bot", value=f'<@390540063609454593>', inline=True)
+    embed.add_field(name=":crown: Owner Bot", value=f"<@{res['owner']['id']}>", inline=True)
     embed.add_field(name="Uptime", value=text, inline=True)
     embed.add_field(name="Commands", value=len(ctx.bot.commands), inline=True)
     embed.add_field(name='Created at', value=ctx.me.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
@@ -816,7 +818,7 @@ async def support(ctx):
 async def help(ctx):
     await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
     embed = discord.Embed(title=f"All commands (Total: {len(ctx.bot.commands)})", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`  `logo`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `cursed`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`  `logo`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
