@@ -86,9 +86,6 @@ class API():
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(f'https://some-random-api.ml/pokedex?pokemon={name}') as r:
                                 res = await r.json()
-                                owo = res['types']
-                                owo = owo.replace("['","")
-                                owo = owo.replace("']","")
                                 try:
                                         embed = discord.Embed(title=f"ID: {res['id']} | {res['name']}", description=res["description"] ,color=0x000000)
                                         embed.set_thumbnail(url=res['sprites']['animated'])
