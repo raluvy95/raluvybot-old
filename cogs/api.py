@@ -86,6 +86,9 @@ class API():
                 async with aiohttp.ClientSession() as cs:
                         async with cs.get(f'https://some-random-api.ml/pokedex?pokemon={name}') as r:
                                 res = await r.json()
+                                owo = res['types']
+                                owo = owo.replace("['","")
+                                owo = owo.replace("']","")
                                 try:
                                         embed = discord.Embed(title=f"ID: {res['id']} | {res['name']}", description=res["description"] ,color=0x000000)
                                         embed.set_thumbnail(url=res['sprites']['animated'])
@@ -94,11 +97,11 @@ class API():
                                         embed.add_field(name="Height", value=res['height'], inline=True)
                                         embed.add_field(name="Weight", value=res['weight'], inline=True)
                                         embed.add_field(name="Base exprerience", value=res['base_experience'], inline=True)
-                                        embed.add_field(name="Types", value=res['types'], inline=True)
+                                        embed.add_field(name="Types", value=owo, inline=True)
                                         embed.add_field(name="Gender ratio", value=f"Male: {res['gender_ratio']['male']} Female: {res['gender_ratio']['female']}", inline=True)
                                         await ctx.send(embed=embed)
                                 except KeyError as key:
-                                        await ctx.send(f"**Ops... {name} is not found in pokedex!**\n`{key}`")
+                                        await ctx.send(f"**Ops... {name} is not found in pokedex!**\nIf the name is correct, that means the API is in **BETA**")
 
                                                         
         @commands.command(aliases=['pika'])
