@@ -94,7 +94,7 @@ class API():
                                         embed.add_field(name="Height", value=res['height'], inline=True)
                                         embed.add_field(name="Weight", value=res['weight'], inline=True)
                                         embed.add_field(name="Base exprerience", value=res['base_experience'], inline=True)
-                                        embed.add_field(name="Types", value=owo, inline=True)
+                                        embed.add_field(name="Types", value=res['types'], inline=True)
                                         embed.add_field(name="Gender ratio", value=f"Male: {res['gender_ratio']['male']} Female: {res['gender_ratio']['female']}", inline=True)
                                         await ctx.send(embed=embed)
                                 except KeyError as key:
