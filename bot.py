@@ -132,12 +132,13 @@ async def vote(ctx):
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def hug(ctx, member: discord.Member=None):
-    a = (random.choice(['https://media.giphy.com/media/xUPGchPtx9E4Ijht9S/giphy.gif', 'http://i.imgur.com/VIwkYxz.gif', 'https://vignette.wikia.nocookie.net/steven-universe/images/1/1b/Group_Hug.gif/revision/latest/scale-to-width-down/320?cb=20160515215411', 'http://orig03.deviantart.net/648e/f/2013/071/2/3/hug_by_shiro_nee-d5xtm62.gif', 'https://vignette.wikia.nocookie.net/degrassi/images/f/f1/Asuna_hugs_Kirito.gif', 'https://thumbs.gfycat.com/AlienatedUnawareArcherfish-size_restricted.gif', 'https://media.giphy.com/media/kvKFM3UWg2P04/giphy.gif', 'https://66.media.tumblr.com/5dfb67d0a674fe5f81950478f5b2d4ed/tumblr_ofd4e2h8O81ub9qlao1_500.gif', 'https://i.imgur.com/r9aU2xv.gif', 'https://media.giphy.com/media/14aBJO7py75MD6/giphy.gif', 'https://66.media.tumblr.com/19e9210e27061fd20b58078cad8c9552/tumblr_nj5nw0LHbw1r7eta3o1_500.gif', 'https://media.giphy.com/media/3oz8xU3bnghA8WzEGI/giphy.gif', 'https://vignette.wikia.nocookie.net/degrassi/images/2/29/Beckdam_hug.gif/revision/latest?cb=20130825231225', 'https://media.giphy.com/media/143v0Z4767T15e/giphy.gif', 'https://i.imgur.com/nrdYNtL.gif', 'https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif', 'https://media.giphy.com/media/DjczAlIcyK1Co/giphy.gif']))
+    with open("data/hug.json", "r") as f:
+        res = json.load(f)
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
       em = discord.Embed(title=f"Hugs {member.name}!", color=0xe67e22)
-      em.set_image(url=a)
+      em.set_image(url=(random.choice(res['hug'])))
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
 
@@ -145,12 +146,13 @@ async def hug(ctx, member: discord.Member=None):
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def kiss(ctx, member: discord.Member=None):
-    a = (random.choice(['https://media1.tenor.com/images/78095c007974aceb72b91aeb7ee54a71/tenor.gif?itemid=5095865', 'https://i0.wp.com/loveisaname.com/wp-content/uploads/2016/09/3.gif', 'https://vignette.wikia.nocookie.net/highschooldxd/images/7/79/Ise_%26_Asia_second_kiss.gif/revision/latest?cb=20180514130852', 'https://data.whicdn.com/images/144335846/original.gif', 'https://media.giphy.com/media/Gj8bn4pgTocog/giphy.gif', 'https://media.giphy.com/media/KH1CTZtw1iP3W/giphy.gif', 'https://media.giphy.com/media/ONq87vZz4626k/giphy.gif', 'https://lifeo.ru/wp-content/uploads/gif-anime-kisses-13.gif', 'http://37.media.tumblr.com/42f96e0adb59440843c94e45650afd19/tumblr_n5mbsq844s1tzpao0o1_500.gif', 'https://media.giphy.com/media/ll5leTSPh4ocE/giphy.gif', 'http://www.lovethisgif.com/uploaded_images/41239-Anime-Cheek-Kiss-Gif-Karen-Kissing-Shino-lewd-.gif', 'https://i.pinimg.com/originals/33/55/7f/33557fcbfbf21b4dd20b34babb5db7b5.gif', 'https://i.imgur.com/NkfsJV7.gif']))
+    with open("data/kiss.json", "r") as f:
+        res = json.load(f)
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
       em = discord.Embed(title=f"Awwww!", color=0xe67e22)
-      em.set_image(url=a)
+      em.set_image(url=(random.choice(res['kiss'])))
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
 
@@ -158,12 +160,13 @@ async def kiss(ctx, member: discord.Member=None):
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def poke(ctx, member: discord.Member=None):
-    a = (random.choice(['https://media1.tenor.com/images/76e377271bf00ba61d954b2752713596/tenor.gif?itemid=5075308', 'https://i.gifer.com/bun.gif', 'https://orig00.deviantart.net/1a00/f/2012/007/3/e/minako_poke_by_endless_summer181-d4llj28.gif', 'https://media1.tenor.com/images/48086974f33a3e0114b2e0387f812ae4/tenor.gif?itemid=12360399', 'https://media.giphy.com/media/WvVzZ9mCyMjsc/giphy.gif', 'https://66.media.tumblr.com/913f6c8b397a28cce5d739d9e5440f13/tumblr_on0ks5LR3P1ridyfoo1_500.gif', 'https://media1.tenor.com/images/fd46d903c4a20a7e82519a78f15b2750/tenor.gif?itemid=8562185', 'https://media1.tenor.com/images/ab936c887562756472f83850426bf6ef/tenor.gif?itemid=11956062', 'https://i.gifer.com/S00v.gif']))
+    with open("data/poke.json", "r") as f:
+        res = json.load(f)
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
       em = discord.Embed(title=f"Poke! :3", color=0xe67e22)
-      em.set_image(url=a)
+      em.set_image(url=(random.choice(res['poke'])))
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
 
@@ -171,27 +174,42 @@ async def poke(ctx, member: discord.Member=None):
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def pat(ctx, member: discord.Member=None):
-    a = (random.choice(['https://media1.tenor.com/images/68d981347bf6ee8c7d6b78f8a7fe3ccb/tenor.gif?itemid=5155410', 'https://media1.tenor.com/images/fb3e0b0f18188450bfded4a585de2b90/tenor.gif?itemid=8208759', 'https://media.tenor.com/images/1d37a873edfeb81a1f5403f4a3bfa185/tenor.gif', 'https://media1.tenor.com/images/1e92c03121c0bd6688d17eef8d275ea7/tenor.gif?itemid=9920853', 'https://thumbs.gfycat.com/AgileHeavyGecko-max-1mb.gif', 'https://i.imgur.com/2lacG7l.gif', 'https://img.fireden.net/a/image/1503/79/1503792695094.gif', 'https://thumbs.gfycat.com/MassiveNeglectedAustraliankestrel-small.gif', 'https://pa1.narvii.com/6215/ed0176937f5de9412f3408cdfd4c6d88b1ec0df1_hq.gif', 'https://i.pinimg.com/originals/2e/62/cd/2e62cd7491be4ec9f0ec210d648b80fd.gif']))
+    with open("data/pat.json", "r") as f:
+        res = json.load(f)
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
       em = discord.Embed(title=f"Pats {member.name}! :3", color=0xe67e22)
-      em.set_image(url=a)
+      em.set_image(url=(random.choice(res['pat'])))
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
 
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
 async def slap(ctx, member: discord.Member=None):
-    a = (random.choice(['https://media.giphy.com/media/LB1kIoSRFTC2Q/giphy.gif', 'https://media1.tenor.com/images/85722c3e51d390e11a0493696f32fb69/tenor.gif?itemid=5463215', 'https://media1.tenor.com/images/85722c3e51d390e11a0493696f32fb69/tenor.gif?itemid=5463215', 'https://media1.tenor.com/images/b6d8a83eb652a30b95e87cf96a21e007/tenor.gif?itemid=10426943', 'https://i.gifer.com/2Vj5.gif', 'https://i.imgur.com/Agwwaj6.gif', 'https://gifimage.net/wp-content/uploads/2017/07/anime-slap-gif-14.gif']))
+    with open("data/slap.json", "r") as f:
+        res = json.load(f)
     if member is None:
       return await ctx.send("**Tag a user to run this command.**")
     if member is not None:
       em = discord.Embed(title=f"* Slaps {member.name} *", color=0xe67e22)
-      em.set_image(url=a)
+      em.set_image(url=(random.choice(res['slap'])))
       em.timestamp = datetime.datetime.utcnow()
       return await ctx.send(embed=em)
-
+    
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def lick(ctx, member: discord.Member=None):
+    with open("data/lick.json", "r") as f:
+        res = json.load(f)
+    if member is None:
+      return await ctx.send("**Tag a user to run this command.**")
+    if member is not None:
+      em = discord.Embed(title=f"* Licks {member.name} *", color=0xe67e22)
+      em.set_image(url=(random.choice(res['lick'])))
+      em.timestamp = datetime.datetime.utcnow()
+      return await ctx.send(embed=em)
+    
 @bot.command(aliases=['flipcoins'])
 async def flipcoin(ctx):
     a = (ctx.author.mention)
@@ -819,10 +837,10 @@ async def support(ctx):
 async def help(ctx):
     await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
     embed = discord.Embed(title=f"All commands (Total: {len(ctx.bot.commands)})", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
-    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `cursed`  `gay`  `achievement`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `pikachu`  `meme`  `shiba`  `emoji`  `respect`  `dog`  `doge`  `cat`  `kill`  `logo`", inline=False)
+    embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `dice`  `slots`  `xd`  `choose`  `dogfact`  `catfact`  `emoji`  `respect`   `kill`", inline=False)
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
-    embed.add_field(name=":smile:  Action", value="`hug`  `kiss`  `poke`  `pat`  `slap`", inline=False)
+    embed.add_field(name=":mountain_snow:  Images", value="`lick`  `slap`  `pat`  `shiba`  `cat`  `dog`  `hug`  `cursed`  `pika`  `achievement`  `meme`  `kiss`  `doge`  `logo`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `uptime`  `vote`  `randomnumber`  `flipcoin`  `avatar`  `support`  `emojiavatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
