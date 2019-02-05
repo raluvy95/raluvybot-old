@@ -612,41 +612,69 @@ async def roleinfo(ctx, role: discord.Role=None):
 @bot.command()
 @commands.has_permissions(kick_members=True)
 async def kick(ctx, member: discord.Member = None, *, message=None):
-        if member is ctx.author:
-             return await ctx.send("<:RaluvyError:489805076118896690> | **I can't kick you! ;-;**")
-        if member is ctx.message.guild.owner:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't kick to Owner!**")
-        if member is ctx.me:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't kick myself ;-;**")
-        if member is None:
-             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,kick <member>`!**")
-        if member is not None and message is None:
-             await member.kick(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked!**')
-        if member is not None and message is not None:
-             await member.kick(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked!**')
+        try:
+             if member is None:
+                  return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,kick <member>`!**")
+             else:
+                  if member is ctx.author:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I can't kick you! ;-;**")
+                  if member.guild_permissions.administrator is True:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I don't kick because that user is a Administrator permission**")
+                  if message is None:
+                       await member.kick(reason=f"Requested by {ctx.author}")
+                  else:
+                       try:
+                          await member.kick(reason=f"{message} | {ctx.author}")
+                       except:
+                          await member.kick(reason=f"Requested by {ctx.author}")
+        except discord.Forbidden as owo:
+             return await ctx.send(f"Ops... I can't kick because\n`{owo}`")
 
 @bot.command()
 @commands.has_permissions(ban_members=True)
-async def softban(ctx, member: discord.Member = None, *, message = None):
-         if member is ctx.author:
-             return await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban you! ;-;**")
-         if member is ctx.message.guild.owner:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban to Owner!**")
-         if member is ctx.me:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban myself ;-;**")
-         if member is None:
-             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
-         if member is not None and message is None:
-             await member.ban(reason=f'Requested by {ctx.author}')
-             await member.unban()
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked (softban)!**')
-         if member is not None and message is not None:
-             await member.ban(reason=f'{message}  by {ctx.author}')
-             await member.unban()
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was kicked (softban)!**')
+async def softban(ctx, member: discord.Member = None, *, message=None):
+        try:
+             if member is None:
+                  return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,softban <member>`!**")
+             else:
+                  if member is ctx.author:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I can't softban you! ;-;**")
+                  if member.guild_permissions.administrator is True:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I don't softban because that user is a Administrator permission**")
+                  if message is None:
+                       await member.ban(reason=f"Requested by {ctx.author}")
+                       await member.unban()
+                  else:
+                       try:
+                          await member.ban(reason=f"{message} | {ctx.author}")
+                          await member.unban()
+                       except:
+                          await member.ban(reason=f"Requested by {ctx.author}")
+                          await member.unban()
+        except discord.Forbidden as owo:
+             return await ctx.send(f"Ops... I can't kick because\n`{owo}`")
 
+@bot.command()
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, member: discord.Member = None, *, message=None):
+        try:
+             if member is None:
+                  return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
+             else:
+                  if member is ctx.author:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
+                  if member.guild_permissions.administrator is True:
+                       return await ctx.send("<:RaluvyError:489805076118896690> | **I don't ban because that user is a Administrator permission**")
+                  if message is None:
+                       await member.ban(reason=f"Requested by {ctx.author}")
+                  else:
+                       try:
+                          await member.ban(reason=f"{message} | {ctx.author}")
+                       except:
+                          await member.ban(reason=f"Requested by {ctx.author}")
+        except discord.Forbidden as owo:
+             return await ctx.send(f"Ops... I can't kick because\n`{owo}`")                   
+                   
 @bot.command(aliases=['nickname'])
 @commands.has_permissions(manage_nicknames=True)
 async def nick(ctx, member: discord.Member=None, *, uwu):
@@ -663,24 +691,6 @@ async def nick(ctx, member: discord.Member=None, *, uwu):
               return await ctx.send(":x: Please use `,nick <mention> <new nick> [remove]`")
      except discord.Forbidden as owo:
           return await ctx.send(f"**Ops... I can't change because:**\n`{owo}`")
-
-@bot.command()
-@commands.has_permissions(ban_members=True)
-async def ban(ctx, member: discord.Member = None, *, message=None):
-         if member is ctx.author:
-             return await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban you! ;-;**")
-         if member is ctx.message.guild.owner:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban to Owner!**")
-         if member is ctx.me:
-             await ctx.send("<:RaluvyError:489805076118896690> | **I can't ban myself ;-;**")
-         if member is None:
-             await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please use `,ban <member>`!**")
-         if member is not None and message is None:
-             await member.ban(reason=f'Requested by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
-         if member is not None and message is not None:
-             await member.ban(reason=f'{message}  by {ctx.author}')
-             await ctx.send(f'<:RaluvySucces:489805130963615754> | **{member} was banned!**')
         
         
 @bot.group(aliases=['rank'])
