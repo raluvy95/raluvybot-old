@@ -12,6 +12,7 @@ class minesweeper:
         self.bot = bot
 
     @commands.command(aliases=["ms", "mines"])
+    @commands.cooldown(1, 5, commands.BucketType.user)
     async def minesweeper(self, ctx, columns = None, rows = None, bombs = None):
         if columns is None or rows is None and bombs is None:
             if columns is not None or rows is not None or bombs is not None:
