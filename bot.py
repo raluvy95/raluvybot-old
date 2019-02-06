@@ -788,9 +788,10 @@ async def membercount(ctx):
     await ctx.send(embed=em)
 
         
-@bot.command(aliases= ["whois", "uinfo", "playerinfo", "user-info"])
+@bot.command(aliases= ["whois", "uinfo", "playerinfo", "user-info", "memberinfo", "member-info", "info-user"])
 @commands.cooldown(1, 3, commands.BucketType.user)
 async def userinfo(ctx, member: discord.Member=None):
+
     if member is None:
             member = (ctx.author)
     if member.bot is True:
@@ -809,24 +810,40 @@ async def userinfo(ctx, member: discord.Member=None):
           c = 'This user is not playing yet'
     if member.activity is not None:
           c = ctx.author.activity.name
-    embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
-    embed.set_author(name="Who is?")
-    embed.add_field(name="Name", value=member.name)
-    embed.add_field(name="Is this a bot?", value=a)
-    embed.add_field(name="Status", value=b)
-    embed.add_field(name="Playing", value=c)
-    embed.add_field(name="Tag", value=member.discriminator)
-    embed.add_field(name="Top Role", value=member.top_role)
-    embed.add_field(name="Nick", value=member.nick)
-    embed.add_field(name="Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
-    embed.add_field(name="Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
-    embed.add_field(name="Roles", value=', '.join(g.name for g in member.roles))
-    embed.set_thumbnail(url=member.avatar_url)
-    embed.set_footer(text=f'ID: {member.id}')
-    embed.timestamp = datetime.datetime.utcnow()
-
-    await ctx.send(embed=embed)
-
+    try:
+       embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
+       embed.set_author(name="Who is?")
+       embed.add_field(name="Name", value=member.name)
+       embed.add_field(name="Is this a bot?", value=a)
+       embed.add_field(name="Status", value=b)
+       embed.add_field(name="Playing", value=c)
+       embed.add_field(name="Tag", value=member.discriminator)
+       embed.add_field(name="Top Role", value=member.top_role)
+       embed.add_field(name="Nick", value=member.nick)
+       embed.add_field(name="Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+       embed.add_field(name="Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+       embed.add_field(name="Roles", value=', '.join(g.name for g in member.roles))
+       embed.set_thumbnail(url=member.avatar_url)
+       embed.set_footer(text=f'ID: {member.id}')
+       embed.timestamp = datetime.datetime.utcnow()
+       await ctx.send(embed=embed)
+    except discord.HTTPException as uwu:
+       embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
+       embed.set_author(name="Who is?")
+       embed.add_field(name="Name", value=member.name)
+       embed.add_field(name="Is this a bot?", value=a)
+       embed.add_field(name="Status", value=b)
+       embed.add_field(name="Playing", value=c)
+       embed.add_field(name="Tag", value=member.discriminator)
+       embed.add_field(name="Top Role", value=member.top_role)
+       embed.add_field(name="Nick", value=member.nick)
+       embed.add_field(name="Joined", value=member.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+       embed.add_field(name="Created at", value=member.created_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+       embed.add_field(name="Roles", value="This user's roles is too many.")
+       embed.set_thumbnail(url=member.avatar_url)
+       embed.set_footer(text=f'ID: {member.id}')
+       embed.timestamp = datetime.datetime.utcnow()
+       return await ctx.send(embed=embed)
 
         
 @bot.command(hidden=True, aliases=['set_playing', 'set playing'])
