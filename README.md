@@ -19,6 +19,6 @@ Join our [Support Server](http://discord.gg/bazhjYQ) and will fix it soon ;)
 ## Contact RaluvyBot
 
 * [Discord Server](http://discord.gg/bazhjYQ)
-* [Website](http://raluvybot.coolpage.biz/)
+* [Website (Dead, but I will remake soon)](http://raluvybot.coolpage.biz/)
 * [Discord Bots List](https://discordbots.org/bot/489061565430235136)
 
