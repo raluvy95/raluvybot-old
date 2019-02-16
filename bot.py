@@ -871,7 +871,6 @@ async def help(ctx):
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":mountain_snow:  Images", value="`lick`  `slap`  `pat`  `shiba`  `cat`  `dog`  `hug`  `cursed`  `pika`  `achievement`  `meme`  `kiss`  `doge`  `logo`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
-    embed.add_field(name=":sound: Soundboard", value="`fart`  `wtf`  `winXP`  `johncena`  `omg`  `sad`  `illuminati`  `fortnite`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `uptime`  `vote`  `randomnumber`  `flipcoin`  `avatar`  `support`  `emojiavatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
