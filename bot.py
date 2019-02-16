@@ -25,6 +25,7 @@ bot.remove_command('help')
 bot.load_extension("cogs.admin")
 bot.load_extension("cogs.api")
 bot.load_extension("cogs.mineswepper")
+bot.load_extension("sound")
     
 @bot.event
 async def on_guild_join(guild):
