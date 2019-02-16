@@ -15,7 +15,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/fart.mp3")
+            source = discord.FFmpegPCMAudio("sound/fart.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -34,7 +34,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/fortnite.mp3")
+            source = discord.FFmpegPCMAudio("sound/fortnite.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -54,7 +54,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/illuminati.mp3")
+            source = discord.FFmpegPCMAudio("sound/illuminati.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -73,7 +73,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/john.mp3")
+            source = discord.FFmpegPCMAudio("sound/john.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -92,7 +92,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/omg.mp3")
+            source = discord.FFmpegPCMAudio("sound/omg.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -111,7 +111,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/fart.mp3")
+            source = discord.FFmpegPCMAudio("sound/fart.mp3")
 
             try:
                 ctx.voice_client.play(source)
@@ -132,7 +132,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/winXP.wav")
+            source = discord.FFmpegPCMAudio("sound/winXP.wav")
 
             try:
                 ctx.voice_client.play(source)
@@ -151,7 +151,7 @@ class sound:
             except discord.ClientException:
                 pass
 
-            source = discord.FFmpegPCMAudio("data/sound/wtf.mp3")
+            source = discord.FFmpegPCMAudio("sound/wtf.mp3")
 
             try:
                 ctx.voice_client.play(source)
