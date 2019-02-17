@@ -25,8 +25,8 @@ bot.remove_command('help')
 bot.load_extension("cogs.admin")
 bot.load_extension("cogs.api")
 bot.load_extension("cogs.mineswepper")
-#bot.load_extension("cogs.music")
-#bot.load_extension("cogs.sound")
+# only in v0.3 bot.load_extension("cogs.music")
+# only in v0.2 bot.load_extension("cogs.sound")
     
 @bot.event
 async def on_guild_join(guild):
@@ -919,7 +919,7 @@ async def help(ctx):
     embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":mountain_snow:  Images", value="`lick`  `slap`  `pat`  `shiba`  `cat`  `dog`  `hug`  `cursed`  `pika`  `achievement`  `meme`  `kiss`  `doge`  `logo`", inline=False)
-    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
+    embed.add_field(name=":information_source: Info", value="`emojiinfo`  `status`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
     embed.add_field(name=":pushpin: Utility", value="`ping`  `uptime`  `vote`  `randomnumber`  `flipcoin`  `avatar`  `support`  `emojiavatar`  `search`  `invite`", inline=False)
     embed.set_footer(text='Use , before using commands')
     embed.timestamp = datetime.datetime.utcnow()
