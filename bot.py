@@ -812,6 +812,10 @@ async def userinfo(ctx, member: discord.Member=None):
           c = 'This user is not playing yet'
     if member.activity is not None:
           c = ctx.author.activity.name
+    if not member.is_on_mobile():
+          d = "No"
+    if member.is_on_mobile():
+          d = "Yes"
     try:
        embed = discord.Embed(title=f"{member}'s info", color=discord.Colour.blue())
        embed.set_author(name="Who is?")
@@ -819,6 +823,7 @@ async def userinfo(ctx, member: discord.Member=None):
        embed.add_field(name="Is this a bot?", value=a)
        embed.add_field(name="Status", value=b)
        embed.add_field(name="Playing", value=c)
+       embed.add_field(name="User is on mobile?", value=d)
        embed.add_field(name="Tag", value=member.discriminator)
        embed.add_field(name="Top Role", value=member.top_role)
        embed.add_field(name="Nick", value=member.nick)
@@ -836,6 +841,7 @@ async def userinfo(ctx, member: discord.Member=None):
        embed.add_field(name="Is this a bot?", value=a)
        embed.add_field(name="Status", value=b)
        embed.add_field(name="Playing", value=c)
+       embed.add_field(name="User is on mobile?", value=d)
        embed.add_field(name="Tag", value=member.discriminator)
        embed.add_field(name="Top Role", value=member.top_role)
        embed.add_field(name="Nick", value=member.nick)
@@ -847,13 +853,55 @@ async def userinfo(ctx, member: discord.Member=None):
        embed.timestamp = datetime.datetime.utcnow()
        return await ctx.send(embed=embed)
 
+
+@bot.command(aliases=['userstatus', 'user-status', 'statususer', 'status-user'])
+@commands.cooldown(1, 5, commands.BucketType.user)
+async def status(ctx, member: discord.Member=None):
+    if member is None:
+        member = ctx.author
+    if member.status.name == 'online':
+          a = "<:online:536240817602560010> Online"
+    if member.status.name == 'idle':
+          a = "<:idle:536240817522868224> Idle"
+    if member.status.name == 'dnd':
+          a = "<:dnd:536240817531125760> DND"
+    if member.status.name == 'offline':
+          a = "<:offline:536240817552228385> Offline"
+    if member.is_on_mobile():
+          if member.mobile_status.name == 'online':
+             b = "<:online:536240817602560010> Online"
+          if member.mobile_status.name == 'idle':
+             b = "<:idle:536240817522868224> Idle"
+          if member.mobile_status.name == 'dnd':
+             b = "<:dnd:536240817531125760> DND"
+          if member.mobile_status.name == 'offline':
+             b = "<:offline:536240817552228385> Offline"
+    else:
+       b = "This user is not on mobile."
+    if member.desktop_status.name == 'online':
+             c = "<:online:536240817602560010> Online"
+    if member.desktop_status.name == 'idle':
+             c = "<:idle:536240817522868224> Idle"
+    if member.desktop_status.name == 'dnd':
+             c = "<:dnd:536240817531125760> DND"
+    if member.desktop_status.name == 'offline':
+             c = "<:offline:536240817552228385> Offline"
+    if member.web_status.name == 'online':
+             d = "<:online:536240817602560010> Online"
+    if member.web_status.name == 'idle':
+             d = "<:idle:536240817522868224> Idle"
+    if member.web_status.name == 'dnd':
+             d = "<:dnd:536240817531125760> DND"
+    if member.web_status.name == 'offline':
+             d = "<:offline:536240817552228385> Offline"
+
+    embed = discord.Embed(title=f"{member.name}'s status", color=discord.Color.blue())
+    embed.add_field(name="Status", value=a)
+    embed.add_field(name="User mobile status", value=b, inline=True)
+    embed.add_field(name="User desktop status", value=c, inline=True)
+    embed.add_field(name="User web status", value=d, inline=True)
+    await ctx.send(embed=embed)
         
-@bot.command(hidden=True, aliases=['set_playing', 'set playing'])
-async def setplaying(ctx, *, message = None):
-    if message is None:
-        return await ctx.send("<:RaluvyQuestion:489805105764499467> | **Please put message what's playing bot...**")
-    await bot.change_presence(activity=discord.Game(name=f"{message} || ,help"))
-    await ctx.send("<:RaluvySucces:489805130963615754>", delete_after=2)                   
                    
 @bot.command()
 @commands.cooldown(1, 5, commands.BucketType.user)
