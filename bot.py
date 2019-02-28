@@ -226,7 +226,14 @@ async def flipcoin(ctx):
 async def lenny(ctx):
     if ctx.invoked_subcommand is None:
         return await ctx.send('( ͡° ͜ʖ ͡°)')
-
+@bot.command()
+@commands.cooldown(1, 5, commands.BucketTypr.user)
+async def reverse(ctx, *, boi=None):
+    if boi is None:
+        return await ctx.send('Please put a message.')
+    else:
+        await ctx.send(boi[::-1])
+        
 @lenny.command()
 async def help(ctx):
     await ctx.send('```Help lenny\n\nOriginal - ( ͡° ͜ʖ ͡°)\nHug - (つ ͡° ͜ʖ ͡°)つ\nAttack - (∩ ͡ ° ʖ ͡ °) ⊃-(===>\nFliptable - ( ͡° ͜ʖ ͡°) ╯︵ ┻─┻\nGlasses - ᕙ(▀̿̿Ĺ̯̿̿▀̿ ̿) ᕗ\nLove - ( ͡♥ 3 ͡♥)```')
@@ -916,7 +923,7 @@ async def help(ctx):
     await ctx.message.add_reaction("\N{WHITE HEAVY CHECK MARK}")
     embed = discord.Embed(title=f"All commands (Total: {len(ctx.bot.commands)})", description="Visit our [website]( http://raluvybot.coolpage.biz/ ) for more information about the commands!\nMore question? Join [Support Server!]( https://discordapp.com/invite/bazhjYQ )", color=0xe67e22)
     embed.add_field(name="<a:ablobdancewhite:464794007755685898> Fun", value="`8ball`  `gay`  `dice`  `slots`  `xd`  `choose`  `dogfact`   `mineswepper`  `catfact`  `emoji`  `respect`  `kill`", inline=False)
-    embed.add_field(name=":ok: Text", value="`lenny`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
+    embed.add_field(name=":ok: Text", value="`lenny`  `reverse`  `shrug`  `blobdance`  `jesussay`  `clap`  `sayd`  `say`  `space`  `owo`  `wumpus`  `parrot`", inline=False)
     embed.add_field(name=":hammer:  Moderation", value="`kick`  `ban`  `nickname`  `softban`  `purge`  `role`", inline=False)
     embed.add_field(name=":mountain_snow:  Images", value="`lick`  `slap`  `pat`  `shiba`  `cat`  `dog`  `hug`  `cursed`  `pika`  `achievement`  `meme`  `kiss`  `doge`  `logo`", inline=False)
     embed.add_field(name=":information_source: Info", value="`emojiinfo`  `status`  `roleinfo`  `membercount`  `serverinfo`  `pokemon`  `userinfo`  `stats`", inline=False)
